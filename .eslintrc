@@ -1,0 +1,23 @@
+{
+    "extends": ["airbnb", "prettier"],
+    "plugins": ["prettier"],
+    "rules": {
+        "prettier/prettier": ["error",
+            {
+                "endOfLine": "auto",
+                "printWidth": 80,
+                "tabWidth": 2,
+                "semi": true,
+                "singleQuote": false
+            }
+        ],
+        "linebreak-style": ["error", "windows"],
+        "prefer-destructuring": "off",
+        "no-empty-pattern":"off"
+    },
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "node": true
+      }
+  }
