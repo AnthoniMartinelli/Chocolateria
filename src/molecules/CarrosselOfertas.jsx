@@ -3,37 +3,50 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-// import { Paper, Button } from "@material-ui/core";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import PaperImagem from "../atoms/PaperImagem";
+import { Grid, makeStyles } from "@material-ui/core";
+/* import PaperImagem from "../atoms/PaperImagem"; */
+import Trufas from "../atoms/img/Trufas.png";
+import Tabletes from "../atoms/img/Tabletes.png";
+import Favoritos from "../atoms/img/Favoritos.png";
 
-const useStyles = makeStyles(() => ({
-  PaperStyle: {
-    backgroundImage:
-      "url('https://avongroup.vteximg.com.br/arquivos/DESK2_BannerHome_Especial_Renew_NewHome_Desk_v1.jpg?v=637592830181470000')",
+const styles = makeStyles(() => ({
+  CarouselStyle: {},
+  PaperStyle: {},
+  imgStyle: {
+    marginTop: "0.5%",
+    width: "100%",
   },
-  classeh2: {},
-  classep: {},
 }));
 
 export default function CarrosselOfertas() {
-  const classes = useStyles();
+  const classes = styles();
   const items = [
     {
-      classePaper: classes.PaperStyle,
-      classeh2: classes.classeh2,
-      classesp: classes.classep,
+      imagemLink: Trufas,
     },
     {
-      name: "Random Name #2",
-      description: "Hello World!",
+      imagemLink: Tabletes,
+    },
+    {
+      imagemLink: Favoritos,
     },
   ];
   return (
-    <Carousel>
-      {items.map((item, i) => (
-        <PaperImagem key={i} item={item} />
-      ))}
-    </Carousel>
+    <Grid>
+      <Carousel
+        className={classes.CarouselStyle}
+        autoPlay="true"
+        interval="5000"
+      >
+        {items.map((item, i) => (
+          <img
+            key={i}
+            alt="imagem de trufas"
+            src={item.imagemLink}
+            className={classes.imgStyle}
+          />
+        ))}
+      </Carousel>
+    </Grid>
   );
 }

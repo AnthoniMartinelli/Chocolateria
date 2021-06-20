@@ -6,10 +6,10 @@ export default createMuiTheme({
       main: "#852508",
     },
     secondary: {
-      main: "#ff3d00",
+      main: "#1de9b6",
     },
   },
 });
 
 export const primary = "#852508";
-export const secondary = "#ff3d00";
+export const secondary = "#1de9b6";
