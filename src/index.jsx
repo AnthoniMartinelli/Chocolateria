@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import Cabecario from "./organisms/Cabecario";
 import About from "./pages/About";
 import Buy from "./pages/Buy";
-import "./atoms/css/animate.min.css";
 import theme from "./atoms/tema";
 
 const App = () => (
