@@ -1,29 +1,25 @@
-import { createStyles, withStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import React from "react";
 import CarrosselOfertas from "../molecules/CarrosselOfertas";
 import NovoProduto from "../molecules/NovoProduto";
-import Encomende from "../atoms/Encomende";
+import Franquia from "../atoms/Franquia";
 import Ofertas from "../organisms/Ofertas";
+import { primary } from "../atoms/tema";
 
-const styles = () =>
-  createStyles({
-    linksBtnsCabecarioStyle: {
-      "&:hover": {
-        textDecoration: "none",
-      },
-    },
-  });
+const styles = makeStyles(() => ({
+  divHomeStyle: {
+    backgroundColor: primary,
+  },
+}));
 
-function Home() {
-  // const { classes } = this.props;
+export default function Home() {
+  const classes = styles();
   return (
-    <>
+    <div className={classes.divHomeStyle}>
       <CarrosselOfertas />
       <NovoProduto />
-      <Encomende />
+      <Franquia />
       <Ofertas />
-    </>
+    </div>
   );
 }
-
-export default withStyles(styles)(Home);

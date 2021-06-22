@@ -1,9 +1,9 @@
 import React from "react";
-import ScrollAnimation from "react-animate-on-scroll";
-import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
+import ScrollAnimation from "react-animate-on-scroll";
+import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core";
 
 const styles = makeStyles(() => ({
@@ -11,7 +11,6 @@ const styles = makeStyles(() => ({
     display: "flex",
     flex: "1 0 auto",
     flexDirection: "column",
-    backgroundColor: "#4BB9F0",
   },
   CardDivStyle: {
     textAlign: "center",
@@ -27,30 +26,36 @@ const styles = makeStyles(() => ({
   },
 }));
 
-export default function NovoProduto() {
+export default function Encomende() {
   const classes = styles();
   return (
     <Card className={classes.CardStyle}>
       <CardContent>
         <CardMedia
           title="imagem alfajor"
-          image="https://brasilcacau.vteximg.com.br/arquivos/ids/155602/Banners_Vitrine_v3_Variedades.png"
+          image="https://www.rbsdirect.com.br/imagesrc/24713450.jpg"
           className={classes.CardMediaStyle}
         />
         <div className={classes.CardDivStyle}>
           <ScrollAnimation animateIn="fadeIn" duration={2}>
-            <Typography variant="h4" component="h4" color="primary">
-              Compre o novo alfajor em uma loja próxima
+            <Typography variant="h4" component="h4">
+              Vire um dos nossos franquiados
             </Typography>
           </ScrollAnimation>
           <ScrollAnimation animateIn="zoomIn" duration={2} delay={1000}>
             <Typography
-              variant="h2"
-              component="h2"
+              variant="h4"
+              component="h4"
               className={classes.TextPrecoStyle}
-              color="primary"
             >
-              Apenas R$1,99
+              email: chocolatesecia@gmail.com
+            </Typography>
+            <Typography
+              variant="h4"
+              component="h4"
+              className={classes.TextPrecoStyle}
+            >
+              telefone: (94)131412508
             </Typography>
           </ScrollAnimation>
         </div>
