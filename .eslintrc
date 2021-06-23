@@ -11,9 +11,7 @@
                 "singleQuote": false
             }
         ],
-        "linebreak-style": ["error", "windows"],
-        "prefer-destructuring": "off",
-        "no-empty-pattern":"off"
+        "linebreak-style": ["error", "windows"]
     },
     "parser": "babel-eslint",
     "env": {
