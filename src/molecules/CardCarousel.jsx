@@ -7,10 +7,18 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core";
 
 const styles = makeStyles(() => ({
+  CardStyle: {
+    paddingLeft: "1rem",
+    paddingRight: "1rem",
+    paddingBottom: "0.5rem",
+  },
   CardMediaStyle: {
     padding: "20%",
   },
   CardContentStyle: {
+    margin: "auto",
+  },
+  PrecoStyle: {
     textAlign: "center",
   },
 }));
@@ -19,7 +27,7 @@ export default function CardCarousel(props) {
   const { CardMediaTitle, CardMediaLink, ContentTitle, ContentText } = props;
   const classes = styles();
   return (
-    <Card>
+    <Card className={classes.CardStyle}>
       <CardMedia
         title={CardMediaTitle}
         image={CardMediaLink}
@@ -29,7 +37,7 @@ export default function CardCarousel(props) {
         <Typography variant="h6" component="h6">
           {ContentTitle}
         </Typography>
-        <Typography component="p" className={classes.CardContentStyle}>
+        <Typography component="p" className={classes.PrecoStyle}>
           {ContentText}
         </Typography>
       </CardContent>

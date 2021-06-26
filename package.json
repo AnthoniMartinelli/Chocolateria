@@ -44,6 +44,8 @@
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "animate.css": "^4.1.1",
+    "firebase": "^9.0.0-beta.5",
+    "firebaseui": "^4.8.0",
     "material-ui-image": "^3.3.2",
     "prettier": "^2.3.1",
     "prop-types": "^15.7.2",

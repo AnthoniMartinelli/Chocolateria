@@ -11,7 +11,7 @@ const breakPoints = [
 
 export default function Ofertas() {
   return (
-    <Carousel breakPoints={breakPoints}>
+    <Carousel breakPoints={breakPoints} pagination={false}>
       <CardCarousel
         CardMediaTitle="imagem Trufa Tradicional"
         CardMediaLink="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw3b56fa2a/medium/1000111_1.png"
@@ -45,13 +45,13 @@ export default function Ofertas() {
       <CardCarousel
         CardMediaTitle="imagem Tablete crocante"
         CardMediaLink="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dweb855062/medium/1000155_1.png"
-        ContentTitle="Cookie Tablete laranja 20g"
+        ContentTitle="Tablete crocante 20g"
         ContentText="R$2,70"
       />
       <CardCarousel
         CardMediaTitle="imagem Tablete laranja"
         CardMediaLink="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw5e962c72/medium/1000168_1.png"
-        ContentTitle="Tablete Castanha de caju 20g"
+        ContentTitle="Tablete laranja 20g"
         ContentText="R$2,79"
       />
       <CardCarousel

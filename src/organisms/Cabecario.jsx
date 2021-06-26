@@ -21,7 +21,6 @@ const useStyles = makeStyles(() => ({
 
 export default function NavTabs() {
   const classes = useStyles();
-
   return (
     <Grid
       container
