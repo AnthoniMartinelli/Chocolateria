@@ -29,13 +29,14 @@ export default function NavTabs() {
       className={classes.root}
     >
       <Grid item xs={6}>
-        <Typography>Beleza interior</Typography>
+        <Typography>Chocolates e Cia</Typography>
       </Grid>
       <Grid item xs={6}>
         <Button
           variant="contained"
           color="secondary"
           className={classes.btnLoginStyle}
+          href="/Login"
         >
           Login
         </Button>
@@ -45,6 +46,7 @@ export default function NavTabs() {
           variant="contained"
           color="secondary"
           className={classes.btnHeaderStyle}
+          href="/"
         >
           Home
         </Button>

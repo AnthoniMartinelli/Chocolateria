@@ -5,7 +5,7 @@ import CardCarousel from "../molecules/CardCarousel";
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
   { width: 558, itemsToShow: 2 },
-  { width: 768, itemsToShow: 4 },
+  { width: 1100, itemsToShow: 4 },
   { width: 1280, itemsToShow: 6 },
 ];
 

@@ -28,12 +28,12 @@ export default function CardCarousel(props) {
   const classes = styles();
   return (
     <Card className={classes.CardStyle}>
-      <CardMedia
-        title={CardMediaTitle}
-        image={CardMediaLink}
-        className={classes.CardMediaStyle}
-      />
       <CardContent>
+        <CardMedia
+          title={CardMediaTitle}
+          image={CardMediaLink}
+          className={classes.CardMediaStyle}
+        />
         <Typography variant="h6" component="h6">
           {ContentTitle}
         </Typography>
