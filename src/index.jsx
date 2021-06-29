@@ -19,6 +19,7 @@ import Login from "./pages/Login";
 import Trufas from "./atoms/img/Trufas.png";
 import Tabletes from "./atoms/img/Tabletes.png";
 import Favoritos from "./atoms/img/Favoritos.png";
+import SignIn from "./pages/SignIn";
 
 // fazer imports com lazy
 
@@ -29,6 +30,7 @@ const App = () => (
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/Login" component={Login} />
+        <Route path="/SignIn" component={SignIn} />
         <Route path="/aboutus" component={About} />
         <Route path="/buy" component={Buy} />
       </Switch>

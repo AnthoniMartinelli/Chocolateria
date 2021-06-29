@@ -24,3 +24,22 @@ export function LoginComEmailSenha(email, senha) {
       console.log(errorMessage);
     });
 }
+
+export function SignInComEmailSenha(email, senha) {
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, senha)
+    .then(({ user }) => {
+      // Signed in
+      const usuario = user;
+      console.log(usuario);
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      // ..
+    });
+}

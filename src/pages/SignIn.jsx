@@ -12,7 +12,7 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core";
-import { LoginComEmailSenha } from "../atoms/firebase/dados";
+import { SignInComEmailSenha } from "../atoms/firebase/dados";
 
 const styles = () =>
   createStyles({
@@ -36,7 +36,7 @@ const styles = () =>
     },
   });
 
-class Login extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
 
@@ -50,7 +50,7 @@ class Login extends Component {
     this.handlerEmailChange = this.handlerEmailChange.bind(this);
     this.handlerSenhaChange = this.handlerSenhaChange.bind(this);
     this.handlerBtnIconeClick = this.handlerBtnIconeClick.bind(this);
-    this.handlerBtnLoginClick = this.handlerBtnLoginClick.bind(this);
+    this.handlerBtnSignInClick = this.handlerBtnSignInClick.bind(this);
   }
 
   handlerEmailChange(event) {
@@ -70,9 +70,9 @@ class Login extends Component {
     }
   }
 
-  handlerBtnLoginClick() {
+  handlerBtnSignInClick() {
     const { email, senha } = this.state;
-    LoginComEmailSenha(email, senha);
+    SignInComEmailSenha(email, senha);
   }
 
   render() {
@@ -90,7 +90,7 @@ class Login extends Component {
             <form>
               <Grid item>
                 <Typography variant="h4" className={classes.TextLoginStyle}>
-                  Login
+                  Criar Conta
                 </Typography>
               </Grid>
               <Grid item className={classes.GridEmailStyle}>
@@ -123,15 +123,15 @@ class Login extends Component {
                 <Button
                   variant="contained"
                   color="secondary"
-                  onClick={this.handlerBtnLoginClick}
+                  onClick={this.handlerBtnSignInClick}
                 >
-                  Fazer Login
+                  Criar Conta
                 </Button>
               </Grid>
               <Grid item>
                 <Typography>
-                  Não tem uma conta? Clique{" "}
-                  <Typography component="a" href="/SignIn">
+                  Já tem uma conta? Clique{" "}
+                  <Typography component="a" href="/Login">
                     aqui
                   </Typography>
                 </Typography>
@@ -144,9 +144,9 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
+SignIn.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(SignIn);
