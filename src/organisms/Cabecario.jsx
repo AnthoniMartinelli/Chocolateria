@@ -3,7 +3,6 @@ import { Button, Grid } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { primary } from "../atoms/tema";
 // import logo from "../atoms/img/logo.jpg";
 
@@ -22,8 +21,6 @@ const useStyles = makeStyles(() => ({
 
 export default function NavTabs() {
   const classes = useStyles();
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
   return (
     <Grid
       container

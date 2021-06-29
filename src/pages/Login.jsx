@@ -12,6 +12,7 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core";
+import { LoginComEmailSenha } from "../atoms/firebase/dados";
 
 const styles = () =>
   createStyles({
@@ -49,6 +50,7 @@ class Login extends Component {
     this.handlerEmailChange = this.handlerEmailChange.bind(this);
     this.handlerSenhaChange = this.handlerSenhaChange.bind(this);
     this.handlerBtnIconeClick = this.handlerBtnIconeClick.bind(this);
+    this.handlerBtnLoginClick = this.handlerBtnLoginClick.bind(this);
   }
 
   handlerEmailChange(event) {
@@ -66,6 +68,11 @@ class Login extends Component {
     } else {
       this.setState({ tipoText: "", iconeSenha: <VisibilityOffIcon /> });
     }
+  }
+
+  handlerBtnLoginClick() {
+    const { email, senha } = this.state;
+    LoginComEmailSenha(email, senha);
   }
 
   render() {
@@ -93,6 +100,7 @@ class Login extends Component {
                   variant="standard"
                   value={email}
                   onChange={this.handlerEmailChange}
+                  fullWidth
                 />
               </Grid>
               <Grid item className={classes.GridSenhaStyle}>
@@ -112,7 +120,11 @@ class Login extends Component {
                 </Button>
               </Grid>
               <Grid item className={classes.GridBtnLoginStyle}>
-                <Button variant="contained" color="secondary">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={this.handlerBtnLoginClick}
+                >
                   Fazer Login
                 </Button>
               </Grid>

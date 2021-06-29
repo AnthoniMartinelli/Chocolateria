@@ -1,7 +1,4 @@
 import { combineReducers, createStore } from "@reduxjs/toolkit";
-import analyticsReducer from "../atoms/firebase/analytics";
-import initializeReducer from "../atoms/firebase/initialize";
-import authReducer from "../atoms/firebase/auth";
 
 // eslint-disable-next-line no-unused-vars
 const asyncFunctionMiddleware = (storeAPI) => (next) => (action) => {
@@ -15,10 +12,6 @@ const asyncFunctionMiddleware = (storeAPI) => (next) => (action) => {
   return next(action);
 };
 
-const rootReducer = combineReducers({
-  initialize: initializeReducer,
-  analytics: analyticsReducer,
-  auth: authReducer,
-});
+const rootReducer = combineReducers({});
 
 export default createStore(rootReducer);

@@ -5,6 +5,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core";
 import { Provider } from "react-redux";
+import { initializeApp } from "firebase/app";
+import firebase from "firebase";
+import { firebaseConfig } from "./atoms/firebase/dados";
 import Store from "./molecules/Store";
 import Home from "./pages/Home";
 import Cabecario from "./organisms/Cabecario";
@@ -32,6 +35,9 @@ const App = () => (
     </ThemeProvider>
   </BrowserRouter>
 );
+const initialize = firebase.initializeApp(firebaseConfig);
+const analytics = firebase.analytics();
+const auth = firebase.auth();
 ReactDOM.render(
   <Provider store={Store}>
     <App />

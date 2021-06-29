@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import firebase from "firebase";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDCQu2X-iD3tau0CHUxk_yuU-KPeAoefbI",
@@ -9,8 +9,10 @@ export const firebaseConfig = {
   appId: "1:43905563529:web:5f3ddc672322752d0c7f58",
   measurementId: "G-J65LJ7Y1N6",
 };
-export function LoginComEmailSenha(auth, email, senha) {
-  signInWithEmailAndPassword(auth, email, senha)
+export function LoginComEmailSenha(email, senha) {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, senha)
     .then((userCredentials) => {
       const { user } = userCredentials;
       console.log(user);
