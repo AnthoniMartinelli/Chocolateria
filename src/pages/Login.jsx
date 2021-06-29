@@ -30,6 +30,9 @@ const styles = () =>
     GridSenhaStyle: {
       marginBottom: "2rem",
     },
+    GridBtnLoginStyle: {
+      marginBottom: "1.5rem",
+    },
   });
 
 class Login extends Component {
@@ -108,10 +111,18 @@ class Login extends Component {
                   {iconeSenha}
                 </Button>
               </Grid>
-              <Grid item>
+              <Grid item className={classes.GridBtnLoginStyle}>
                 <Button variant="contained" color="secondary">
                   Fazer Login
                 </Button>
+              </Grid>
+              <Grid item>
+                <Typography>
+                  Não tem uma conta? Clique{" "}
+                  <Typography component="a" href="/">
+                    aqui
+                  </Typography>
+                </Typography>
               </Grid>
             </form>
           </CardContent>
