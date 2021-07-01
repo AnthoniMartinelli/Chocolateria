@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ScrollAnimation from "react-animate-on-scroll";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core";
+import Spinner from "./Spinner";
 
 const styles = makeStyles(() => ({
   CardStyle: {
@@ -32,11 +33,13 @@ export default function NovoProduto() {
   return (
     <Card className={classes.CardStyle}>
       <CardContent>
-        <CardMedia
-          title="imagem alfajor"
-          image="https://brasilcacau.vteximg.com.br/arquivos/ids/155602/Banners_Vitrine_v3_Variedades.png"
-          className={classes.CardMediaStyle}
-        />
+        <Suspense fallback={<Spinner />}>
+          <CardMedia
+            title="imagem alfajor"
+            image="https://brasilcacau.vteximg.com.br/arquivos/ids/155602/Banners_Vitrine_v3_Variedades.png"
+            className={classes.CardMediaStyle}
+          />
+        </Suspense>
         <div className={classes.CardDivStyle}>
           <ScrollAnimation animateIn="fadeIn" duration={2}>
             <Typography variant="h4" component="h4" color="primary">

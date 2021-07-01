@@ -43,6 +43,7 @@ class SignIn extends Component {
     this.state = {
       email: "",
       senha: "",
+      confirmarSenha: "",
       tipoText: "password",
       iconeSenha: <VisibilityIcon />,
     };
@@ -61,6 +62,10 @@ class SignIn extends Component {
     this.setState({ senha: event.target.value });
   }
 
+  handlerConfirmarSenhaChange(event) {
+    this.setState({ confirmarSenha: event.target.value });
+  }
+
   handlerBtnIconeClick() {
     const { tipoText } = this.state;
     if (tipoText === "") {
@@ -76,7 +81,7 @@ class SignIn extends Component {
   }
 
   render() {
-    const { email, senha, tipoText, iconeSenha } = this.state;
+    const { email, senha, tipoText, iconeSenha, confirmarSenha } = this.state;
     const { classes } = this.props;
     return (
       <Grid
@@ -111,6 +116,22 @@ class SignIn extends Component {
                   type={tipoText}
                   value={senha}
                   onChange={this.handlerSenhaChange}
+                />
+                <Button
+                  className={classes.BtnIconeStyle}
+                  onClick={this.handlerBtnIconeClick}
+                >
+                  {iconeSenha}
+                </Button>
+              </Grid>
+              <Grid item className={classes.GridSenhaStyle}>
+                <TextField
+                  required
+                  label="Confirme senha"
+                  variant="standard"
+                  type={tipoText}
+                  value={confirmarSenha}
+                  onChange={this.handlerConfirmarSenhaChange}
                 />
                 <Button
                   className={classes.BtnIconeStyle}
