@@ -1,5 +1,6 @@
 import firebase from "firebase";
 import React, { useContext, useState, useEffect } from "react";
+import Spinner from "../../molecules/Spinner";
 
 const contexto = React.createContext();
 
@@ -70,7 +71,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   if (pending) {
-    return <>Loading...</>;
+    return <Spinner />;
   }
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password);

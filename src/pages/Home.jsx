@@ -1,10 +1,15 @@
 import { makeStyles } from "@material-ui/core";
-import React from "react";
-import CarrosselOfertas from "../molecules/CarrosselOfertas";
+import React, { Suspense, lazy } from "react";
+import { primary } from "../atoms/tema";
+import Spinner from "../molecules/Spinner";
+/* import CarrosselOfertas from "../molecules/CarrosselOfertas";
 import NovoProduto from "../molecules/NovoProduto";
 import Franquia from "../atoms/Franquia";
-import Ofertas from "../organisms/Ofertas";
-import { primary } from "../atoms/tema";
+import Ofertas from "../organisms/Ofertas"; */
+const CarrosselOfertas = lazy(() => import("../molecules/CarrosselOfertas"));
+const NovoProduto = lazy(() => import("../molecules/NovoProduto"));
+const Franquia = lazy(() => import("../atoms/Franquia"));
+const Ofertas = lazy(() => import("../organisms/Ofertas"));
 
 const styles = makeStyles(() => ({
   divHomeStyle: {
@@ -16,10 +21,12 @@ export default function Home() {
   const classes = styles();
   return (
     <div className={classes.divHomeStyle}>
-      <CarrosselOfertas />
-      <NovoProduto />
-      <Franquia />
-      <Ofertas />
+      <Suspense fallback={<Spinner />}>
+        <CarrosselOfertas />
+        <NovoProduto />
+        <Franquia />
+        <Ofertas />
+      </Suspense>
     </div>
   );
 }

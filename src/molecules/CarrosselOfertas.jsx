@@ -35,6 +35,7 @@ export default function CarrosselOfertas() {
         className={classes.CarouselStyle}
         autoPlay="true"
         interval="5000"
+        navButtonsAlwaysInvisible
       >
         {items.map((item) => (
           <img

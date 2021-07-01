@@ -8,15 +8,18 @@ import { makeStyles } from "@material-ui/core";
 
 const styles = makeStyles(() => ({
   CardStyle: {
+    marginTop: "0%",
+    paddingTop: "0%",
     paddingLeft: "1rem",
     paddingRight: "1rem",
     paddingBottom: "0.5rem",
   },
   CardMediaStyle: {
-    padding: "20%",
+    paddingBottom: "30%",
+    paddingTop: "0%",
   },
   CardContentStyle: {
-    margin: "auto",
+    width: "80%",
   },
   PrecoStyle: {
     textAlign: "center",
