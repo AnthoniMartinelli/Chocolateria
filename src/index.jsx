@@ -18,6 +18,8 @@ const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
 const SignIn = lazy(() => import("./pages/SignIn"));
 const About = lazy(() => import("./pages/About"));
+const RotaPrivada = lazy(() => import("./atoms/RotaPrivada"));
+const Membros = lazy(() => import("./pages/Membros"));
 
 const App = () => (
   <BrowserRouter>
@@ -28,7 +30,8 @@ const App = () => (
           <Route path="/" exact component={Home} />
           <Route path="/Login" component={Login} />
           <Route path="/SignIn" component={SignIn} />
-          <Route path="/aboutus" component={About} />
+          <Route path="/About" component={About} />
+          <RotaPrivada path="/Membros" component={Membros} />
         </Switch>
       </Suspense>
     </ThemeProvider>

@@ -12,7 +12,8 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core";
-import { LoginComEmailSenha } from "../atoms/firebase/dados";
+import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
+import { contexto } from "../atoms/firebase/dados";
 
 const styles = () =>
   createStyles({
@@ -37,12 +38,19 @@ const styles = () =>
   });
 
 class Login extends Component {
+  // eslint-disable-next-line react/static-property-placement
+  static contextType = contexto;
+
   constructor(props) {
     super(props);
 
     this.state = {
       email: "",
+      erroEmail: false,
+      msgErroEmail: "",
       senha: "",
+      erroSenha: false,
+      msgErroSenha: false,
       tipoText: "password",
       iconeSenha: <VisibilityIcon />,
     };
@@ -72,11 +80,38 @@ class Login extends Component {
 
   handlerBtnLoginClick() {
     const { email, senha } = this.state;
-    LoginComEmailSenha(email, senha);
+    const verificacaoEmail = verificarEmail(email);
+    const verificacaoSenha = verificarSenha(senha);
+    if (verificacaoEmail !== "" || verificacaoSenha !== "") {
+      if (verificacaoEmail !== "")
+        this.setState({ erroEmail: true, msgErroEmail: verificacaoEmail });
+      else this.setState({ erroEmail: false, msgErroEmail: "" });
+      if (verificacaoSenha !== "")
+        this.setState({ erroSenha: true, msgErroSenha: verificacaoSenha });
+      else this.setState({ erroSenha: false, msgErroSenha: "" });
+      return;
+    }
+    this.setState({
+      erroSenha: false,
+      msgErroSenha: "",
+      erroEmail: false,
+      msgErroEmail: "",
+    });
+    const { login } = this.context;
+    login(email, senha);
   }
 
   render() {
-    const { email, senha, tipoText, iconeSenha } = this.state;
+    const {
+      email,
+      erroEmail,
+      msgErroEmail,
+      senha,
+      erroSenha,
+      msgErroSenha,
+      tipoText,
+      iconeSenha,
+    } = this.state;
     const { classes } = this.props;
     return (
       <Grid
@@ -100,6 +135,8 @@ class Login extends Component {
                   variant="standard"
                   value={email}
                   onChange={this.handlerEmailChange}
+                  error={erroEmail}
+                  helperText={msgErroEmail}
                   fullWidth
                 />
               </Grid>
@@ -111,6 +148,8 @@ class Login extends Component {
                   type={tipoText}
                   value={senha}
                   onChange={this.handlerSenhaChange}
+                  error={erroSenha}
+                  helperText={msgErroSenha}
                 />
                 <Button
                   className={classes.BtnIconeStyle}

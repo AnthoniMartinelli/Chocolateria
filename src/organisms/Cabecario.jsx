@@ -24,8 +24,6 @@ export default function Cabecario() {
   const classes = useStyles();
   const { currentUser } = useContext(contexto);
   /* if(currentUser){}  checa se tá logado */
-  console.log("esse é o usuario");
-  console.log(currentUser);
   return (
     <Grid
       container
@@ -66,6 +64,7 @@ export default function Cabecario() {
           variant="contained"
           color="secondary"
           className={classes.btnHeaderStyle}
+          href="/About"
         >
           Sobre nós
         </Button>

@@ -18,7 +18,7 @@ export const firebaseConfig = {
 
 const initialize = firebase.initializeApp(firebaseConfig);
 
-export function LoginComEmailSenha(email, senha) {
+/* export function LoginComEmailSenha(email, senha) {
   firebase
     .auth()
     .signInWithEmailAndPassword(email, senha)
@@ -52,7 +52,7 @@ export function SignInComEmailSenha(email, senha) {
       console.log(errorMessage);
       // ..
     });
-}
+} */
 
 export function usarAutenticacao() {
   return useContext(contexto);
@@ -73,7 +73,7 @@ export function AuthProvider({ children }) {
   if (pending) {
     return <Spinner />;
   }
-  function signup(email, password) {
+  function criarConta(email, password) {
     return auth.createUserWithEmailAndPassword(email, password);
   }
 
@@ -100,7 +100,7 @@ export function AuthProvider({ children }) {
   const value = {
     currentUser,
     login,
-    signup,
+    criarConta,
     logout,
     resetPassword,
     updateEmail,

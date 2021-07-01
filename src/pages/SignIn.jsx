@@ -12,7 +12,7 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core";
-import { SignInComEmailSenha } from "../atoms/firebase/dados";
+import { contexto } from "../atoms/firebase/dados";
 
 const styles = () =>
   createStyles({
@@ -37,6 +37,9 @@ const styles = () =>
   });
 
 class SignIn extends Component {
+  // eslint-disable-next-line react/static-property-placement
+  static contextType = contexto;
+
   constructor(props) {
     super(props);
 
@@ -77,7 +80,8 @@ class SignIn extends Component {
 
   handlerBtnSignInClick() {
     const { email, senha } = this.state;
-    SignInComEmailSenha(email, senha);
+    const { criarConta } = this.context;
+    criarConta(email, senha);
   }
 
   render() {
