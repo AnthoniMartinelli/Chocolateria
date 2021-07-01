@@ -11,7 +11,7 @@
   "main": "index.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --config webpack.config.js --open --hot --mode development",
+    "start": "webpack serve --config webpack.config.js --open --hot",
     "build": "webpack --mode production"
   },
   "license": "",
@@ -24,6 +24,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
+    "dotenv-webpack": "^7.0.3",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",

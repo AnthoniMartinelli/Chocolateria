@@ -2,7 +2,8 @@
 import { Button, Grid } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
-import React from "react";
+import React, { useContext } from "react";
+import { contexto } from "../atoms/firebase/dados";
 import { primary } from "../atoms/tema";
 // import logo from "../atoms/img/logo.jpg";
 
@@ -19,8 +20,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function NavTabs() {
+export default function Cabecario() {
   const classes = useStyles();
+  const { currentUser } = useContext(contexto);
+  /* if(currentUser){}  checa se tá logado */
+  console.log("esse é o usuario");
+  console.log(currentUser);
   return (
     <Grid
       container

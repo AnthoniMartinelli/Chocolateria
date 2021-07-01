@@ -1,15 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Aboutus extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
-  render() {
-    return <p>About</p>;
-  }
+function Aboutus() {
+  return <p>Sobre</p>;
 }
-
 export default Aboutus;

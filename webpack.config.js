@@ -1,7 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
-module.exports = {
+module.exports = (env) => ({
   entry: path.resolve(__dirname, "./src/index.jsx"),
   output: {
     path: path.resolve(__dirname, "./dist"),
@@ -48,6 +49,9 @@ module.exports = {
       filename: "index.html",
       inject: "body",
     }),
+    new Dotenv({
+      path: `./.env${env.file ? `.${env.file}` : ""}`,
+    }),
   ],
   devServer: {
     port: 8080,
@@ -55,4 +59,4 @@ module.exports = {
     compress: true,
     historyApiFallback: true,
   },
-};
+});
