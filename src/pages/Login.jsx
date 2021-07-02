@@ -91,14 +91,16 @@ class Login extends Component {
       else this.setState({ erroSenha: false, msgErroSenha: "" });
       return;
     }
+
+    const { login } = this.context;
     this.setState({
       erroSenha: false,
       msgErroSenha: "",
       erroEmail: false,
       msgErroEmail: "",
     });
-    const { login } = this.context;
-    login(email, senha);
+    const res = login(email, senha);
+    console.log(res);
   }
 
   render() {

@@ -23,7 +23,9 @@ const useStyles = makeStyles(() => ({
 export default function Cabecario() {
   const classes = useStyles();
   const { currentUser } = useContext(contexto);
-  /* if(currentUser){}  checa se tá logado */
+  if (currentUser) {
+    console.log("tá logado");
+  }
   return (
     <Grid
       container

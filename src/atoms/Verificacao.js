@@ -1,5 +1,5 @@
 export function verificarEmail(texto) {
-  let mensagem;
+  let mensagem = "";
   if (texto === "") mensagem = "O email não foi preenchido";
   else if (!/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(texto))
     mensagem = "digite um email válido";
