@@ -7,6 +7,9 @@ npm install
 
 ### para rodar o projeto
 ```
+npm run build
+```
+```
 npm start
 ```
 ### Descrição.
