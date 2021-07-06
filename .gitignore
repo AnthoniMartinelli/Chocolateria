@@ -1,6 +1,7 @@
 # Don't commit system files or dependencies
 *.DS_Store
 node_modules/
+.next/
 
 # Jekyll
 _site

@@ -12,6 +12,7 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core";
+import { withRouter, NextRouter } from "next/router";
 import { obterContexto } from "../atoms/firebase";
 import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
 
@@ -131,9 +132,10 @@ class SignIn extends Component {
     }
 
     const { criarConta } = this.context;
+    const { router } = this.props;
     criarConta(email, senha)
       .then(() => {
-        window.location.href = "/";
+        router.push("/");
       })
       .catch((error) => {
         switch (error.code) {
@@ -261,6 +263,7 @@ class SignIn extends Component {
 SignIn.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
+  router: PropTypes.instanceOf(NextRouter).isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(withRouter(SignIn));

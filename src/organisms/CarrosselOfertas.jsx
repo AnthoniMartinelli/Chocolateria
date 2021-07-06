@@ -1,11 +1,11 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { v4 } from "uuid";
+import Image from "next/image";
 import Carousel from "react-material-ui-carousel";
 import { Grid, makeStyles } from "@material-ui/core";
 import Trufas from "../atoms/img/Trufas.png";
 import Tabletes from "../atoms/img/Tabletes.png";
 import Favoritos from "../atoms/img/Favoritos.png";
-import Spinner from "../molecules/Spinner";
 
 const styles = makeStyles(() => ({
   CarouselStyle: {},
@@ -39,14 +39,12 @@ export default function CarrosselOfertas() {
         navButtonsAlwaysInvisible
       >
         {items.map((item) => (
-          <Suspense fallback={<Spinner />}>
-            <img
-              key={v4()}
-              alt="imagem de trufas"
-              src={item.imagemLink}
-              className={classes.imgStyle}
-            />
-          </Suspense>
+          <Image
+            key={v4()}
+            alt="imagem de trufas"
+            src={item.imagemLink}
+            className={classes.imgStyle}
+          />
         ))}
       </Carousel>
     </Grid>

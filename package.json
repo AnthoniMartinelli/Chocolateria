@@ -4,21 +4,22 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AnthoniBortolotto/TemplateJs.git"
+    "url": "https://github.com/AnthoniBortolotto/Chocolateria.git"
   },
   "keywords": [],
   "author": "",
   "main": "index.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --config webpack.config.js --open --hot --mode development",
-    "build": "webpack --mode production"
+    "start": "next start",
+    "build": "next build"
   },
   "license": "",
   "browserslist": "",
   "devDependencies": {
     "@babel/core": "^7.14.5",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-do-expressions": "^7.14.5",
     "@babel/preset-env": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
     "babel-eslint": "^10.1.0",
@@ -27,6 +28,7 @@
     "dotenv-webpack": "^7.0.3",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.23.4",
@@ -48,6 +50,7 @@
     "animate.css": "^4.1.1",
     "firebase": "^8.6.8",
     "material-ui-image": "^3.3.2",
+    "next": "^11.0.1",
     "prettier": "^2.3.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -55,7 +58,6 @@
     "react-dom": "^17.0.2",
     "react-elastic-carousel": "^0.11.5",
     "react-material-ui-carousel": "^2.2.6",
-    "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.0",

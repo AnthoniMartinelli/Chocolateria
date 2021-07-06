@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import PropTypes from "prop-types";
+import { withRouter, NextRouter } from "next/router";
 import {
   Button,
   createStyles,
@@ -92,11 +93,11 @@ class Login extends Component {
       else this.setState({ erroSenha: false, msgErroSenha: "" });
       return;
     }
-
+    const { router } = this.props;
     const { login } = this.context;
     login(email, senha)
       .then(() => {
-        window.location.href = "/";
+        router.push("/");
       })
       .catch((error) => {
         switch (error.code) {
@@ -212,6 +213,7 @@ class Login extends Component {
 
 Login.propTypes = {
   classes: PropTypes.instanceOf(makeStyles()).isRequired,
+  router: PropTypes.instanceOf(NextRouter).isRequired,
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(withRouter(Login));

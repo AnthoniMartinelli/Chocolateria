@@ -104,7 +104,7 @@ export default function Franquia() {
                 Vire um dos nossos franquiados
               </Typography>
             </ScrollAnimation>
-            <ScrollAnimation animateIn="bounceInLeft" duration={2} delay={1000}>
+            <ScrollAnimation animateIn="bounceInLeft" duration={1} delay={1000}>
               <Typography
                 variant="h4"
                 component="h4"
@@ -115,7 +115,7 @@ export default function Franquia() {
             </ScrollAnimation>
             <ScrollAnimation
               animateIn="bounceInRight"
-              duration={2}
+              duration={1}
               delay={1000}
             >
               <Typography
