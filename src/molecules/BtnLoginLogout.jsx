@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Button, makeStyles } from "@material-ui/core";
-import { contexto } from "../atoms/firebase";
+import { usarAutenticacao } from "../atoms/firebase";
 
 const useStyles = makeStyles(() => ({
   btnStyle: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
 
 export default function BtnLoginLogout() {
   const classes = useStyles();
-  const { currentUser, logout } = useContext(contexto);
+  const { currentUser, logout } = usarAutenticacao();
   if (currentUser) {
     return (
       <Button

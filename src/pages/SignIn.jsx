@@ -12,7 +12,7 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core";
-import { contexto } from "../atoms/firebase";
+import { obterContexto } from "../atoms/firebase";
 
 const styles = () =>
   createStyles({
@@ -38,7 +38,7 @@ const styles = () =>
 
 class SignIn extends Component {
   // eslint-disable-next-line react/static-property-placement
-  static contextType = contexto;
+  static contextType = obterContexto();
 
   constructor(props) {
     super(props);

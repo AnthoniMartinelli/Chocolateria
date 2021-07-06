@@ -4,9 +4,11 @@ import Spinner from "../molecules/Spinner";
 
 const contexto = React.createContext();
 
-export { contexto };
+export function obterContexto() {
+  return contexto;
+}
 
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,

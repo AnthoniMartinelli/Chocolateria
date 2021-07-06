@@ -1,13 +1,13 @@
 /* eslint-disable no-extra-boolean-cast */
 /* eslint-disable react/jsx-curly-brace-presence */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useContext } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { contexto } from "../atoms/firebase";
+import { usarAutenticacao } from "../atoms/firebase";
 
 // eslint-disable-next-line react/prop-types
 const RotaPrivada = ({ component: RouteComponent, ...rest }) => {
-  const { currentUser } = useContext(contexto);
+  const { currentUser } = usarAutenticacao();
   return (
     <Route
       {...rest}

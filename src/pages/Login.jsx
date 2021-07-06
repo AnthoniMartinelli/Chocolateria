@@ -14,7 +14,7 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
-import { contexto } from "../atoms/firebase";
+import { obterContexto } from "../atoms/firebase";
 
 const styles = () =>
   createStyles({
@@ -40,7 +40,7 @@ const styles = () =>
 
 class Login extends Component {
   // eslint-disable-next-line react/static-property-placement
-  static contextType = contexto;
+  static contextType = obterContexto();
 
   constructor(props) {
     super(props);
@@ -94,14 +94,38 @@ class Login extends Component {
     }
 
     const { login } = this.context;
-    this.setState({
-      erroSenha: false,
-      msgErroSenha: "",
-      erroEmail: false,
-      msgErroEmail: "",
-    });
-    login(email, senha);
-    window.location.href = "/";
+    login(email, senha)
+      .then(() => {
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        switch (error.code) {
+          case "auth/too-many-requests":
+            this.setState({
+              erroEmail: true,
+              msgErroEmail: "este usuario foi bloqueado temporariamente",
+            });
+            break;
+          case "auth/user-not-found":
+            this.setState({
+              erroEmail: true,
+              msgErroEmail: "senha ou email incorretos",
+            });
+            break;
+          case "auth/wrong-password":
+            this.setState({
+              erroEmail: true,
+              msgErroEmail: "senha ou email incorretos",
+            });
+            break;
+          default:
+            this.setState({
+              erroEmail: true,
+              msgErroEmail: "Um erro desconhecido ocorreu",
+            });
+            break;
+        }
+      });
   }
 
   render() {

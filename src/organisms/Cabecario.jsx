@@ -12,10 +12,6 @@ const useStyles = makeStyles(() => ({
   btnHeaderStyle: {
     marginLeft: "1%",
   },
-  btnLoginStyle: {
-    float: "right",
-    marginRight: "1%",
-  },
 }));
 
 export default function Cabecario() {
