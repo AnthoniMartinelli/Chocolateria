@@ -76,13 +76,7 @@ export function AuthProvider({ children }) {
     return <Spinner />;
   }
   function criarConta(email, password) {
-    try {
-      auth.createUserWithEmailAndPassword(email, password);
-    } catch (error) {
-      console.log(error);
-      return error;
-    }
-    return "";
+    return auth.createUserWithEmailAndPassword(email, password);
   }
 
   function login(email, password) {

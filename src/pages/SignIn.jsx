@@ -13,6 +13,7 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { obterContexto } from "../atoms/firebase";
+import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
 
 const styles = () =>
   createStyles({
@@ -45,15 +46,27 @@ class SignIn extends Component {
 
     this.state = {
       email: "",
+      erroEmail: false,
+      msgErroEmail: "",
       senha: "",
-      confirmarSenha: "",
-      tipoText: "password",
+      erroSenha: false,
+      msgErroSenha: false,
+      tipoTextSenha: "password",
       iconeSenha: <VisibilityIcon />,
+      confirmarSenha: "",
+      erroConfirmar: false,
+      msgErroConfirmar: false,
+      tipoTextConfirmar: "password",
+      iconeConfirmar: <VisibilityIcon />,
     };
 
     this.handlerEmailChange = this.handlerEmailChange.bind(this);
     this.handlerSenhaChange = this.handlerSenhaChange.bind(this);
-    this.handlerBtnIconeClick = this.handlerBtnIconeClick.bind(this);
+    this.handlerBtnIconeSenhaClick = this.handlerBtnIconeSenhaClick.bind(this);
+    this.handlerConfirmarSenhaChange =
+      this.handlerConfirmarSenhaChange.bind(this);
+    this.handlerBtnIconeConfirmarClick =
+      this.handlerBtnIconeConfirmarClick.bind(this);
     this.handlerBtnSignInClick = this.handlerBtnSignInClick.bind(this);
   }
 
@@ -69,24 +82,93 @@ class SignIn extends Component {
     this.setState({ confirmarSenha: event.target.value });
   }
 
-  handlerBtnIconeClick() {
-    const { tipoText } = this.state;
-    if (tipoText === "") {
-      this.setState({ tipoText: "password", iconeSenha: <VisibilityIcon /> });
+  handlerBtnIconeSenhaClick() {
+    const { tipoTextSenha } = this.state;
+    if (tipoTextSenha === "") {
+      this.setState({
+        tipoTextSenha: "password",
+        iconeSenha: <VisibilityIcon />,
+      });
     } else {
-      this.setState({ tipoText: "", iconeSenha: <VisibilityOffIcon /> });
+      this.setState({ tipoTextSenha: "", iconeSenha: <VisibilityOffIcon /> });
+    }
+  }
+
+  handlerBtnIconeConfirmarClick() {
+    const { tipoTextConfirmar } = this.state;
+    if (tipoTextConfirmar === "") {
+      this.setState({
+        tipoTextConfirmar: "password",
+        iconeConfirmar: <VisibilityIcon />,
+      });
+    } else {
+      this.setState({
+        tipoTextConfirmar: "",
+        iconeConfirmar: <VisibilityOffIcon />,
+      });
     }
   }
 
   handlerBtnSignInClick() {
-    const { email, senha } = this.state;
+    const { email, senha, confirmarSenha } = this.state;
+    if (senha !== confirmarSenha) {
+      this.setState({
+        erroConfirmar: true,
+        msgErroConfirmar: "A senha não é igual",
+      });
+      return;
+    }
+    const verificacaoEmail = verificarEmail(email);
+    const verificacaoSenha = verificarSenha(senha);
+    if (verificacaoEmail !== "" || verificacaoSenha !== "") {
+      if (verificacaoEmail !== "")
+        this.setState({ erroEmail: true, msgErroEmail: verificacaoEmail });
+      else this.setState({ erroEmail: false, msgErroEmail: "" });
+      if (verificacaoSenha !== "")
+        this.setState({ erroSenha: true, msgErroSenha: verificacaoSenha });
+      else this.setState({ erroSenha: false, msgErroSenha: "" });
+      return;
+    }
+
     const { criarConta } = this.context;
-    criarConta(email, senha);
-    window.location.href = "/";
+    criarConta(email, senha)
+      .then(() => {
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            this.setState({
+              erroEmail: true,
+              msgErroEmail: "já existe uma conta com esse email",
+            });
+            break;
+          default:
+            this.setState({
+              erroEmail: true,
+              msgErroEmail: "Um erro desconhecido ocorreu",
+            });
+            break;
+        }
+      });
   }
 
   render() {
-    const { email, senha, tipoText, iconeSenha, confirmarSenha } = this.state;
+    const {
+      email,
+      erroEmail,
+      msgErroEmail,
+      senha,
+      erroSenha,
+      msgErroSenha,
+      tipoTextSenha,
+      iconeSenha,
+      confirmarSenha,
+      erroConfirmar,
+      msgErroConfirmar,
+      iconeConfirmar,
+      tipoTextConfirmar,
+    } = this.state;
     const { classes } = this.props;
     return (
       <Grid
@@ -110,6 +192,8 @@ class SignIn extends Component {
                   variant="standard"
                   value={email}
                   onChange={this.handlerEmailChange}
+                  error={erroEmail}
+                  helperText={msgErroEmail}
                   fullWidth
                 />
               </Grid>
@@ -118,13 +202,15 @@ class SignIn extends Component {
                   required
                   label="Senha"
                   variant="standard"
-                  type={tipoText}
+                  type={tipoTextSenha}
                   value={senha}
+                  error={erroSenha}
+                  helperText={msgErroSenha}
                   onChange={this.handlerSenhaChange}
                 />
                 <Button
                   className={classes.BtnIconeStyle}
-                  onClick={this.handlerBtnIconeClick}
+                  onClick={this.handlerBtnIconeSenhaClick}
                 >
                   {iconeSenha}
                 </Button>
@@ -134,15 +220,17 @@ class SignIn extends Component {
                   required
                   label="Confirme senha"
                   variant="standard"
-                  type={tipoText}
+                  type={tipoTextConfirmar}
                   value={confirmarSenha}
+                  error={erroConfirmar}
+                  helperText={msgErroConfirmar}
                   onChange={this.handlerConfirmarSenhaChange}
                 />
                 <Button
                   className={classes.BtnIconeStyle}
-                  onClick={this.handlerBtnIconeClick}
+                  onClick={this.handlerBtnIconeConfirmarClick}
                 >
-                  {iconeSenha}
+                  {iconeConfirmar}
                 </Button>
               </Grid>
               <Grid item className={classes.GridBtnLoginStyle}>
