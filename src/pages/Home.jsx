@@ -6,10 +6,10 @@ import Spinner from "../molecules/Spinner";
 import NovoProduto from "../molecules/NovoProduto";
 import Franquia from "../atoms/Franquia";
 import Ofertas from "../organisms/Ofertas"; */
-const CarrosselOfertas = lazy(() => import("../molecules/CarrosselOfertas"));
-const NovoProduto = lazy(() => import("../molecules/NovoProduto"));
-const Franquia = lazy(() => import("../atoms/Franquia"));
-const Ofertas = lazy(() => import("../organisms/Ofertas"));
+const CarrosselOfertas = lazy(() => import("../organisms/CarrosselOfertas"));
+const NovoProduto = lazy(() => import("../organisms/NovoProduto"));
+const Franquia = lazy(() => import("../organisms/Franquia"));
+const Ofertas = lazy(() => import("../templates/Ofertas"));
 
 const styles = makeStyles(() => ({
   divHomeStyle: {

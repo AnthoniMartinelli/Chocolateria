@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import React, { useContext, useState, useEffect } from "react";
-import Spinner from "../../molecules/Spinner";
+import Spinner from "../molecules/Spinner";
 
 const contexto = React.createContext();
 

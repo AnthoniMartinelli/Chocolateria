@@ -3,9 +3,7 @@ import ReactDOM from "react-dom";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core";
-import { Provider } from "react-redux";
-import { AuthProvider } from "./atoms/firebase/dados";
-import Store from "./molecules/Store";
+import { AuthProvider } from "./atoms/firebase";
 import theme from "./atoms/tema";
 import Spinner from "./molecules/Spinner";
 /* import Home from "./pages/Home";
@@ -18,7 +16,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
 const SignIn = lazy(() => import("./pages/SignIn"));
 const About = lazy(() => import("./pages/About"));
-const RotaPrivada = lazy(() => import("./atoms/RotaPrivada"));
+const RotaPrivada = lazy(() => import("./molecules/RotaPrivada"));
 const Membros = lazy(() => import("./pages/Membros"));
 
 const App = () => (
@@ -40,9 +38,7 @@ const App = () => (
 
 ReactDOM.render(
   <AuthProvider>
-    <Provider store={Store}>
-      <App />
-    </Provider>
+    <App />
   </AuthProvider>,
   document.querySelector("#root")
 );

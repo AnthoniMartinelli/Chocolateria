@@ -9,11 +9,12 @@ import {
   Button,
   createStyles,
   Grid,
+  makeStyles,
   Typography,
   withStyles,
 } from "@material-ui/core";
 import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
-import { contexto } from "../atoms/firebase/dados";
+import { contexto } from "../atoms/firebase";
 
 const styles = () =>
   createStyles({
@@ -99,8 +100,8 @@ class Login extends Component {
       erroEmail: false,
       msgErroEmail: "",
     });
-    const res = login(email, senha);
-    console.log(res);
+    login(email, senha);
+    window.location.href = "/";
   }
 
   render() {
@@ -186,8 +187,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.instanceOf(makeStyles()).isRequired,
 };
 
 export default withStyles(styles)(Login);

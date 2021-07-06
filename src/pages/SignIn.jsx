@@ -12,7 +12,7 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core";
-import { contexto } from "../atoms/firebase/dados";
+import { contexto } from "../atoms/firebase";
 
 const styles = () =>
   createStyles({
@@ -82,6 +82,7 @@ class SignIn extends Component {
     const { email, senha } = this.state;
     const { criarConta } = this.context;
     criarConta(email, senha);
+    window.location.href = "/";
   }
 
   render() {

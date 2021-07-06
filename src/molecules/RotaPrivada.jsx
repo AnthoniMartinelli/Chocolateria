@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { contexto } from "./firebase/dados";
+import { contexto } from "../atoms/firebase";
 
 // eslint-disable-next-line react/prop-types
 const RotaPrivada = ({ component: RouteComponent, ...rest }) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "react-elastic-carousel";
-import CardCarousel from "../molecules/CardCarousel";
+import CardCarousel from "../organisms/CardCarousel";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },

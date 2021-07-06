@@ -1,11 +1,9 @@
-/* eslint-disable no-unused-vars */
 import { Button, Grid } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Typography from "@material-ui/core/Typography";
-import React, { useContext } from "react";
-import { contexto } from "../atoms/firebase/dados";
+import React from "react";
 import { primary } from "../atoms/tema";
-// import logo from "../atoms/img/logo.jpg";
+import BtnLoginLogout from "../molecules/BtnLoginLogout";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -22,10 +20,6 @@ const useStyles = makeStyles(() => ({
 
 export default function Cabecario() {
   const classes = useStyles();
-  const { currentUser } = useContext(contexto);
-  if (currentUser) {
-    console.log("tá logado");
-  }
   return (
     <Grid
       container
@@ -37,14 +31,7 @@ export default function Cabecario() {
         <Typography>Chocolates e Cia</Typography>
       </Grid>
       <Grid item xs={6}>
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classes.btnLoginStyle}
-          href="/Login"
-        >
-          Login
-        </Button>
+        <BtnLoginLogout />
       </Grid>
       <Grid item container direction="row" justify="flex-end">
         <Button

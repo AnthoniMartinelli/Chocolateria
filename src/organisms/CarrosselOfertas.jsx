@@ -5,7 +5,7 @@ import { Grid, makeStyles } from "@material-ui/core";
 import Trufas from "../atoms/img/Trufas.png";
 import Tabletes from "../atoms/img/Tabletes.png";
 import Favoritos from "../atoms/img/Favoritos.png";
-import Spinner from "./Spinner";
+import Spinner from "../molecules/Spinner";
 
 const styles = makeStyles(() => ({
   CarouselStyle: {},

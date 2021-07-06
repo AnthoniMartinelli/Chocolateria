@@ -1,16 +1,16 @@
 import React, { Suspense } from "react";
-import ScrollAnimation from "react-animate-on-scroll";
-import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
+import ScrollAnimation from "react-animate-on-scroll";
+import Typography from "@material-ui/core/Typography";
 import { Grid, makeStyles } from "@material-ui/core";
-import Spinner from "./Spinner";
+import Spinner from "../molecules/Spinner";
 
 const styles = makeStyles((theme) => ({
   CardStyle: {
     display: "flex",
-    backgroundColor: "#4BB9F0",
+    backgroundColor: "#FFFFFF",
     [theme.breakpoints.up("xs")]: {
       paddingBottom: "0",
     },
@@ -82,8 +82,9 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-export default function NovoProduto() {
+export default function Franquia() {
   const classes = styles();
+
   return (
     <Card className={classes.CardStyle}>
       <CardContent className={classes.CardContentStyle}>
@@ -91,8 +92,8 @@ export default function NovoProduto() {
           <Grid container item xs={4}>
             <Suspense fallback={<Spinner />}>
               <CardMedia
-                title="imagem alfajor"
-                image="https://brasilcacau.vteximg.com.br/arquivos/ids/155602/Banners_Vitrine_v3_Variedades.png"
+                title="imagem franquia"
+                image="https://www.rbsdirect.com.br/imagesrc/24713450.jpg"
                 className={classes.CardMediaStyle}
               />
             </Suspense>
@@ -100,17 +101,29 @@ export default function NovoProduto() {
           <Grid item className={classes.CardGridStyle} xs={8}>
             <ScrollAnimation animateIn="fadeIn" duration={2}>
               <Typography variant="h4" component="h4" color="primary">
-                Compre o novo alfajor em uma loja próxima
+                Vire um dos nossos franquiados
               </Typography>
             </ScrollAnimation>
-            <ScrollAnimation animateIn="zoomIn" duration={2} delay={1000}>
+            <ScrollAnimation animateIn="bounceInLeft" duration={2} delay={1000}>
               <Typography
-                variant="h2"
-                component="h2"
+                variant="h4"
+                component="h4"
                 className={classes.TextPrecoStyle}
-                color="primary"
               >
-                Apenas R$1,99
+                email: chocolatesecia@gmail.com
+              </Typography>
+            </ScrollAnimation>
+            <ScrollAnimation
+              animateIn="bounceInRight"
+              duration={2}
+              delay={1000}
+            >
+              <Typography
+                variant="h4"
+                component="h4"
+                className={classes.TextPrecoStyle}
+              >
+                telefone: (94)131412508
               </Typography>
             </ScrollAnimation>
           </Grid>

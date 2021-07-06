@@ -4,8 +4,8 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core";
-import Spinner from "./Spinner";
+import { Grid, makeStyles } from "@material-ui/core";
+import Spinner from "../molecules/Spinner";
 
 const styles = makeStyles(() => ({
   CardStyle: {
@@ -31,23 +31,25 @@ export default function CardCarousel(props) {
   const { CardMediaTitle, CardMediaLink, ContentTitle, ContentText } = props;
   const classes = styles();
   return (
-    <Card className={classes.CardStyle}>
-      <CardContent>
-        <Suspense fallback={<Spinner />}>
-          <CardMedia
-            title={CardMediaTitle}
-            image={CardMediaLink}
-            className={classes.CardMediaStyle}
-          />
-        </Suspense>
-        <Typography variant="h6" component="h6">
-          {ContentTitle}
-        </Typography>
-        <Typography component="p" className={classes.PrecoStyle}>
-          {ContentText}
-        </Typography>
-      </CardContent>
-    </Card>
+    <Grid container item alignContent="stretch" justify="space-between">
+      <Card className={classes.CardStyle}>
+        <CardContent>
+          <Suspense fallback={<Spinner />}>
+            <CardMedia
+              title={CardMediaTitle}
+              image={CardMediaLink}
+              className={classes.CardMediaStyle}
+            />
+          </Suspense>
+          <Typography variant="h6" component="h6">
+            {ContentTitle}
+          </Typography>
+          <Typography component="p" className={classes.PrecoStyle}>
+            {ContentText}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Grid>
   );
 }
 
