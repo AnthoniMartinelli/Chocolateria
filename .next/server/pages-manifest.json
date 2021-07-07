@@ -1,7 +1,8 @@
 {
   "/About": "pages/About.html",
+  "/Encomende": "pages/Encomende.html",
   "/Login": "pages/Login.html",
-  "/Membros": "pages/Membros.html",
+  "/Produtos": "pages/Produtos.html",
   "/SignIn": "pages/SignIn.html",
   "/_app": "pages/_app.js",
   "/": "pages/index.html",

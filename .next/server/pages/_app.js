@@ -9,9 +9,9 @@ exports.modules = {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "T$": function() { return /* binding */ primary; }
+/* harmony export */   "T$": function() { return /* binding */ primary; },
+/* harmony export */   "BD": function() { return /* binding */ secondary; }
 /* harmony export */ });
-/* unused harmony export secondary */
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1731);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -30,7 +30,7 @@ const secondary = "#1de9b6";
 
 /***/ }),
 
-/***/ 745:
+/***/ 3672:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63,6 +63,8 @@ var external_react_responsive_namespaceObject = require("react-responsive");;
 var external_react_responsive_default = /*#__PURE__*/__webpack_require__.n(external_react_responsive_namespaceObject);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(2318);
+// EXTERNAL MODULE: ./node_modules/next/dist/client/router.js
+var client_router = __webpack_require__(4651);
 ;// CONCATENATED MODULE: ./src/molecules/BtnLoginLogout.jsx
 
 
@@ -110,6 +112,7 @@ function BtnLoginLogout() {
 
 
 
+
 const CabecarioDesktop_useStyles = makeStyles_default()(() => ({
   btnHeaderStyle: {
     marginLeft: "1%"
@@ -117,6 +120,7 @@ const CabecarioDesktop_useStyles = makeStyles_default()(() => ({
 }));
 function CabecarioDesktop() {
   const classes = CabecarioDesktop_useStyles();
+  const router = (0,client_router.useRouter)();
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)(core_.Grid, {
     container: true,
     spacing: 2,
@@ -140,23 +144,25 @@ function CabecarioDesktop() {
         variant: "contained",
         color: "secondary",
         className: classes.btnHeaderStyle,
-        href: "/",
+        onClick: () => router.push("/"),
         children: "Home"
       }), /*#__PURE__*/jsx_runtime_.jsx(core_.Button, {
         variant: "contained",
         color: "secondary",
         className: classes.btnHeaderStyle,
+        onClick: () => router.push("/Produtos"),
         children: "Produtos"
       }), /*#__PURE__*/jsx_runtime_.jsx(core_.Button, {
         variant: "contained",
         color: "secondary",
         className: classes.btnHeaderStyle,
-        href: "/About",
+        onClick: () => router.push("/About"),
         children: "Sobre n\xF3s"
       }), /*#__PURE__*/jsx_runtime_.jsx(core_.Button, {
         variant: "contained",
         color: "secondary",
         className: classes.btnHeaderStyle,
+        onClick: () => router.push("/Encomende"),
         children: "Encomende"
       })]
     })]
@@ -177,12 +183,24 @@ var Menu_namespaceObject = require("@material-ui/icons/Menu");;
 var Menu_default = /*#__PURE__*/__webpack_require__.n(Menu_namespaceObject);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/List/List.js
 var List = __webpack_require__(2822);
+;// CONCATENATED MODULE: external "@material-ui/icons/Home"
+var Home_namespaceObject = require("@material-ui/icons/Home");;
+var Home_default = /*#__PURE__*/__webpack_require__.n(Home_namespaceObject);
+;// CONCATENATED MODULE: external "@material-ui/icons/Store"
+var Store_namespaceObject = require("@material-ui/icons/Store");;
+var Store_default = /*#__PURE__*/__webpack_require__.n(Store_namespaceObject);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItem/ListItem.js
 var ListItem = __webpack_require__(998);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItemIcon/ListItemIcon.js
+var ListItemIcon = __webpack_require__(6869);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js
 var ListItemText = __webpack_require__(5757);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ClickAwayListener/ClickAwayListener.js
-var ClickAwayListener = __webpack_require__(2795);
+;// CONCATENATED MODULE: external "@material-ui/icons/Description"
+var Description_namespaceObject = require("@material-ui/icons/Description");;
+var Description_default = /*#__PURE__*/__webpack_require__.n(Description_namespaceObject);
+;// CONCATENATED MODULE: external "@material-ui/icons/ShoppingCart"
+var ShoppingCart_namespaceObject = require("@material-ui/icons/ShoppingCart");;
+var ShoppingCart_default = /*#__PURE__*/__webpack_require__.n(ShoppingCart_namespaceObject);
 ;// CONCATENATED MODULE: ./src/organisms/CabecarioMobile.jsx
 
 
@@ -195,22 +213,29 @@ var ClickAwayListener = __webpack_require__(2795);
 
 
 
-/* import Divider from "@material-ui/core/Divider"; */
-
-
-/* import ListItemIcon from "@material-ui/core/ListItemIcon"; */
-
-
-/* import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail"; */
 
 
 
+
+
+
+
+
+
+
+
+const styles = (0,core_.makeStyles)(() => ({
+  DrawerStyle: {
+    backgroundColor: tema/* secondary */.BD
+  }
+}));
 function CabecarioMobile() {
+  const classes = styles();
   const {
     0: menu,
     1: setMenu
   } = (0,external_react_.useState)(false);
+  const router = (0,client_router.useRouter)();
 
   const abrirMenu = () => {
     setMenu(true);
@@ -229,25 +254,49 @@ function CabecarioMobile() {
         alignItems: "center",
         children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)(Grid/* default */.Z, {
           item: true,
-          children: [/*#__PURE__*/jsx_runtime_.jsx(ClickAwayListener/* default */.Z, {
-            children: /*#__PURE__*/jsx_runtime_.jsx(SwipeableDrawer/* default */.Z, {
-              ModalProps: {
-                onBackdropClick: fecharMenu
-              },
-              open: menu,
-              children: /*#__PURE__*/(0,jsx_runtime_.jsxs)(List/* default */.Z, {
-                children: [/*#__PURE__*/jsx_runtime_.jsx(ListItem/* default */.Z, {
-                  button: true,
-                  children: /*#__PURE__*/jsx_runtime_.jsx(ListItemText/* default */.Z, {
-                    primary: "Home"
-                  })
-                }), /*#__PURE__*/jsx_runtime_.jsx(ListItem/* default */.Z, {
-                  button: true,
-                  children: /*#__PURE__*/jsx_runtime_.jsx(ListItemText/* default */.Z, {
-                    primary: "Sobre"
-                  })
+          children: [/*#__PURE__*/jsx_runtime_.jsx(SwipeableDrawer/* default */.Z, {
+            classes: {
+              paper: classes.DrawerStyle
+            },
+            ModalProps: {
+              onBackdropClick: fecharMenu
+            },
+            open: menu,
+            children: /*#__PURE__*/(0,jsx_runtime_.jsxs)(List/* default */.Z, {
+              onClick: () => fecharMenu(),
+              children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)(ListItem/* default */.Z, {
+                button: true,
+                onClick: () => router.push("/"),
+                children: [/*#__PURE__*/jsx_runtime_.jsx(ListItemIcon/* default */.Z, {
+                  children: /*#__PURE__*/jsx_runtime_.jsx((Home_default()), {})
+                }), /*#__PURE__*/jsx_runtime_.jsx(ListItemText/* default */.Z, {
+                  primary: "Home"
                 })]
-              })
+              }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(ListItem/* default */.Z, {
+                button: true,
+                onClick: () => router.push("/Produtos"),
+                children: [/*#__PURE__*/jsx_runtime_.jsx(ListItemIcon/* default */.Z, {
+                  children: /*#__PURE__*/jsx_runtime_.jsx((Store_default()), {})
+                }), /*#__PURE__*/jsx_runtime_.jsx(ListItemText/* default */.Z, {
+                  primary: "Produtos"
+                })]
+              }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(ListItem/* default */.Z, {
+                button: true,
+                onClick: () => router.push("/About"),
+                children: [/*#__PURE__*/jsx_runtime_.jsx(ListItemIcon/* default */.Z, {
+                  children: /*#__PURE__*/jsx_runtime_.jsx((Description_default()), {})
+                }), /*#__PURE__*/jsx_runtime_.jsx(ListItemText/* default */.Z, {
+                  primary: "Sobre N\xF3s"
+                })]
+              }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(ListItem/* default */.Z, {
+                button: true,
+                onClick: () => router.push("/Encomende"),
+                children: [/*#__PURE__*/jsx_runtime_.jsx(ListItemIcon/* default */.Z, {
+                  children: /*#__PURE__*/jsx_runtime_.jsx((ShoppingCart_default()), {})
+                }), /*#__PURE__*/jsx_runtime_.jsx(ListItemText/* default */.Z, {
+                  primary: "Encomende"
+                })]
+              })]
             })
           }), /*#__PURE__*/jsx_runtime_.jsx(IconButton/* default */.Z, {
             onClick: () => abrirMenu(),
@@ -396,6 +445,22 @@ module.exports = require("firebase");;
 
 /***/ }),
 
+/***/ 8417:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("next/dist/next-server/lib/router-context.js");;
+
+/***/ }),
+
+/***/ 2238:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("next/dist/next-server/lib/router/utils/get-asset-path-from-route.js");;
+
+/***/ }),
+
 /***/ 701:
 /***/ (function(module) {
 
@@ -442,6 +507,13 @@ module.exports = require("react-transition-group");;
 "use strict";
 module.exports = require("react/jsx-runtime");;
 
+/***/ }),
+
+/***/ 4453:
+/***/ (function() {
+
+/* (ignored) */
+
 /***/ })
 
 };
@@ -451,7 +523,7 @@ module.exports = require("react/jsx-runtime");;
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = __webpack_require__.X(0, [263,228,318,58,468], function() { return __webpack_exec__(745); });
+var __webpack_exports__ = __webpack_require__.X(0, [263,228,485,400,468], function() { return __webpack_exec__(3672); });
 module.exports = __webpack_exports__;
 
 })();
