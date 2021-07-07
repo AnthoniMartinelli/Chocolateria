@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, makeStyles } from "@material-ui/core";
-import { usarAutenticacao } from "../atoms/firebase";
+import { usarAutenticacao } from "../atoms/services/firebase";
 
 const useStyles = makeStyles(() => ({
   btnStyle: {

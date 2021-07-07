@@ -16,7 +16,7 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
-import { obterContexto } from "../atoms/firebase";
+import { obterContexto } from "../atoms/services/firebase";
 
 const styles = () =>
   createStyles({

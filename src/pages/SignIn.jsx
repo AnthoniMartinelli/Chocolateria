@@ -14,7 +14,7 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { withRouter, NextRouter } from "next/router";
-import { obterContexto } from "../atoms/firebase";
+import { obterContexto } from "../atoms/services/firebase";
 import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
 
 const styles = () =>

@@ -51,8 +51,8 @@ var head_ = __webpack_require__(701);
 var head_default = /*#__PURE__*/__webpack_require__.n(head_);
 // EXTERNAL MODULE: external "@material-ui/core"
 var core_ = __webpack_require__(1731);
-// EXTERNAL MODULE: ./src/atoms/firebase.jsx
-var firebase = __webpack_require__(7966);
+// EXTERNAL MODULE: ./src/atoms/services/firebase.jsx
+var firebase = __webpack_require__(3468);
 // EXTERNAL MODULE: ./src/atoms/tema.js
 var tema = __webpack_require__(4996);
 ;// CONCATENATED MODULE: external "@material-ui/core/styles/makeStyles"
@@ -166,13 +166,23 @@ function CabecarioDesktop() {
 var AppBar = __webpack_require__(5258);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
 var Grid = __webpack_require__(1749);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/SwipeableDrawer/SwipeableDrawer.js + 6 modules
+var SwipeableDrawer = __webpack_require__(1571);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Toolbar/Toolbar.js
 var Toolbar = __webpack_require__(8358);
-// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/IconButton/IconButton.js + 4 modules
-var IconButton = __webpack_require__(1554);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/IconButton/IconButton.js
+var IconButton = __webpack_require__(7812);
 ;// CONCATENATED MODULE: external "@material-ui/icons/Menu"
 var Menu_namespaceObject = require("@material-ui/icons/Menu");;
 var Menu_default = /*#__PURE__*/__webpack_require__.n(Menu_namespaceObject);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/List/List.js
+var List = __webpack_require__(2822);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItem/ListItem.js
+var ListItem = __webpack_require__(998);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js
+var ListItemText = __webpack_require__(5757);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/ClickAwayListener/ClickAwayListener.js
+var ClickAwayListener = __webpack_require__(2795);
 ;// CONCATENATED MODULE: ./src/organisms/CabecarioMobile.jsx
 
 
@@ -184,7 +194,32 @@ var Menu_default = /*#__PURE__*/__webpack_require__.n(Menu_namespaceObject);
 
 
 
+
+/* import Divider from "@material-ui/core/Divider"; */
+
+
+/* import ListItemIcon from "@material-ui/core/ListItemIcon"; */
+
+
+/* import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail"; */
+
+
+
 function CabecarioMobile() {
+  const {
+    0: menu,
+    1: setMenu
+  } = (0,external_react_.useState)(false);
+
+  const abrirMenu = () => {
+    setMenu(true);
+  };
+
+  const fecharMenu = () => {
+    setMenu(false);
+  };
+
   return /*#__PURE__*/jsx_runtime_.jsx(AppBar/* default */.Z, {
     position: "static",
     children: /*#__PURE__*/jsx_runtime_.jsx(Toolbar/* default */.Z, {
@@ -192,14 +227,35 @@ function CabecarioMobile() {
         container: true,
         justify: "space-between",
         alignItems: "center",
-        children: [/*#__PURE__*/jsx_runtime_.jsx(Grid/* default */.Z, {
+        children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)(Grid/* default */.Z, {
           item: true,
-          children: /*#__PURE__*/jsx_runtime_.jsx(IconButton/* default */.Z, {
+          children: [/*#__PURE__*/jsx_runtime_.jsx(ClickAwayListener/* default */.Z, {
+            children: /*#__PURE__*/jsx_runtime_.jsx(SwipeableDrawer/* default */.Z, {
+              ModalProps: {
+                onBackdropClick: fecharMenu
+              },
+              open: menu,
+              children: /*#__PURE__*/(0,jsx_runtime_.jsxs)(List/* default */.Z, {
+                children: [/*#__PURE__*/jsx_runtime_.jsx(ListItem/* default */.Z, {
+                  button: true,
+                  children: /*#__PURE__*/jsx_runtime_.jsx(ListItemText/* default */.Z, {
+                    primary: "Home"
+                  })
+                }), /*#__PURE__*/jsx_runtime_.jsx(ListItem/* default */.Z, {
+                  button: true,
+                  children: /*#__PURE__*/jsx_runtime_.jsx(ListItemText/* default */.Z, {
+                    primary: "Sobre"
+                  })
+                })]
+              })
+            })
+          }), /*#__PURE__*/jsx_runtime_.jsx(IconButton/* default */.Z, {
+            onClick: () => abrirMenu(),
             edge: "start",
             color: "inherit",
             "aria-label": "menu",
             children: /*#__PURE__*/jsx_runtime_.jsx((Menu_default()), {})
-          })
+          })]
         }), /*#__PURE__*/jsx_runtime_.jsx(Typography/* default */.Z, {
           variant: "h6",
           children: "Chocolates e Cia"
@@ -395,7 +451,7 @@ module.exports = require("react/jsx-runtime");;
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = __webpack_require__.X(0, [263,947,318,31,966], function() { return __webpack_exec__(745); });
+var __webpack_exports__ = __webpack_require__.X(0, [263,228,318,58,468], function() { return __webpack_exec__(745); });
 module.exports = __webpack_exports__;
 
 })();

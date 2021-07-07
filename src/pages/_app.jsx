@@ -3,7 +3,7 @@
 import React from "react";
 import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core";
-import { AuthProvider } from "../atoms/firebase";
+import { AuthProvider } from "../atoms/services/firebase";
 import theme from "../atoms/tema";
 import Cabecario from "../templates/Cabecario";
 
