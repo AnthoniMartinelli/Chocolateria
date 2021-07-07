@@ -14,7 +14,6 @@ const styles = makeStyles(() => ({
 
 export default function Home() {
   const classes = styles();
-  console.log(process.env.REACT_APP_FIREBASE_KEY);
   return (
     <div className={classes.divHomeStyle}>
       <CarrosselOfertas />

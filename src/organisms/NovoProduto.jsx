@@ -50,7 +50,7 @@ const styles = makeStyles((theme) => ({
   },
   TextCompreStyle: {
     [theme.breakpoints.up("xs")]: {
-      fontSize: "15pt",
+      fontSize: "14pt",
     },
     [theme.breakpoints.up("sm")]: {
       fontSize: "20pt",
@@ -59,12 +59,12 @@ const styles = makeStyles((theme) => ({
       fontSize: "30pt",
     },
     [theme.breakpoints.up("lg")]: {
-      fontSize: "50pt",
+      fontSize: "35pt",
     },
   },
   TextPrecoStyle: {
     [theme.breakpoints.up("xs")]: {
-      fontSize: "15pt",
+      fontSize: "14pt",
       marginTop: "1rem",
     },
     [theme.breakpoints.up("sm")]: {
@@ -76,7 +76,7 @@ const styles = makeStyles((theme) => ({
       marginTop: "5rem",
     },
     [theme.breakpoints.up("lg")]: {
-      fontSize: "50pt",
+      fontSize: "35pt",
       marginTop: "5rem",
     },
   },
@@ -99,7 +99,12 @@ export default function NovoProduto() {
           </Grid>
           <Grid item className={classes.CardGridStyle} xs={8}>
             <ScrollAnimation animateIn="fadeIn" duration={2}>
-              <Typography variant="h4" component="h4" color="primary">
+              <Typography
+                variant="h4"
+                component="h4"
+                color="primary"
+                className={classes.TextCompreStyle}
+              >
                 Compre o novo alfajor em uma loja próxima
               </Typography>
             </ScrollAnimation>

@@ -32,25 +32,31 @@ const styles = makeStyles((theme) => ({
   },
   CardMediaStyle: {
     float: "left",
-    height: "100%",
     width: "100%",
     [theme.breakpoints.up("xs")]: {
-      paddingBottom: "0%",
-      padding: "0%",
+      backgroundPosition: "center",
+      height: "80%",
+      paddingBottom: "18%",
     },
     [theme.breakpoints.up("sm")]: {
+      backgroundPosition: "right",
+      height: "80%",
       paddingBottom: "30%",
     },
     [theme.breakpoints.up("md")]: {
+      backgroundPosition: "right",
+      height: "80%",
       paddingBottom: "20%",
     },
     [theme.breakpoints.up("lg")]: {
-      paddingBottom: "15%",
+      backgroundPosition: "right",
+      height: "100%",
+      paddingBottom: "10%",
     },
   },
-  TextCompreStyle: {
+  TextVireStyle: {
     [theme.breakpoints.up("xs")]: {
-      fontSize: "15pt",
+      fontSize: "10pt",
     },
     [theme.breakpoints.up("sm")]: {
       fontSize: "20pt",
@@ -59,12 +65,12 @@ const styles = makeStyles((theme) => ({
       fontSize: "30pt",
     },
     [theme.breakpoints.up("lg")]: {
-      fontSize: "50pt",
+      fontSize: "35pt",
     },
   },
   TextPrecoStyle: {
     [theme.breakpoints.up("xs")]: {
-      fontSize: "15pt",
+      fontSize: "10pt",
       marginTop: "1rem",
     },
     [theme.breakpoints.up("sm")]: {
@@ -76,7 +82,7 @@ const styles = makeStyles((theme) => ({
       marginTop: "5rem",
     },
     [theme.breakpoints.up("lg")]: {
-      fontSize: "50pt",
+      fontSize: "35pt",
       marginTop: "5rem",
     },
   },
@@ -100,11 +106,16 @@ export default function Franquia() {
           </Grid>
           <Grid item className={classes.CardGridStyle} xs={8}>
             <ScrollAnimation animateIn="fadeIn" duration={2}>
-              <Typography variant="h4" component="h4" color="primary">
+              <Typography
+                variant="h4"
+                component="h4"
+                color="primary"
+                className={classes.TextVireStyle}
+              >
                 Vire um dos nossos franquiados
               </Typography>
             </ScrollAnimation>
-            <ScrollAnimation animateIn="bounceInLeft" duration={1} delay={1000}>
+            <ScrollAnimation animateIn="bounceInLeft" duration={1} delay={500}>
               <Typography
                 variant="h4"
                 component="h4"
@@ -113,11 +124,7 @@ export default function Franquia() {
                 email: chocolatesecia@gmail.com
               </Typography>
             </ScrollAnimation>
-            <ScrollAnimation
-              animateIn="bounceInRight"
-              duration={1}
-              delay={1000}
-            >
+            <ScrollAnimation animateIn="bounceInRight" duration={1} delay={500}>
               <Typography
                 variant="h4"
                 component="h4"
