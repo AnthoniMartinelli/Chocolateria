@@ -30,7 +30,7 @@ const secondary = "#1de9b6";
 
 /***/ }),
 
-/***/ 286:
+/***/ 745:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58,6 +58,9 @@ var tema = __webpack_require__(4996);
 ;// CONCATENATED MODULE: external "@material-ui/core/styles/makeStyles"
 var makeStyles_namespaceObject = require("@material-ui/core/styles/makeStyles");;
 var makeStyles_default = /*#__PURE__*/__webpack_require__.n(makeStyles_namespaceObject);
+;// CONCATENATED MODULE: external "react-responsive"
+var external_react_responsive_namespaceObject = require("react-responsive");;
+var external_react_responsive_default = /*#__PURE__*/__webpack_require__.n(external_react_responsive_namespaceObject);
 // EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Typography/Typography.js
 var Typography = __webpack_require__(2318);
 ;// CONCATENATED MODULE: ./src/molecules/BtnLoginLogout.jsx
@@ -99,7 +102,7 @@ function BtnLoginLogout() {
     children: "Login"
   });
 }
-;// CONCATENATED MODULE: ./src/organisms/Cabecario.jsx
+;// CONCATENATED MODULE: ./src/organisms/CabecarioDesktop.jsx
 
 
 
@@ -107,22 +110,17 @@ function BtnLoginLogout() {
 
 
 
-
-const Cabecario_useStyles = makeStyles_default()(() => ({
-  root: {
-    backgroundColor: tema/* primary */.T$
-  },
+const CabecarioDesktop_useStyles = makeStyles_default()(() => ({
   btnHeaderStyle: {
     marginLeft: "1%"
   }
 }));
-function Cabecario() {
-  const classes = Cabecario_useStyles();
+function CabecarioDesktop() {
+  const classes = CabecarioDesktop_useStyles();
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)(core_.Grid, {
     container: true,
     spacing: 2,
     justify: "space-between",
-    className: classes.root,
     children: [/*#__PURE__*/jsx_runtime_.jsx(core_.Grid, {
       item: true,
       xs: 6,
@@ -161,6 +159,82 @@ function Cabecario() {
         className: classes.btnHeaderStyle,
         children: "Encomende"
       })]
+    })]
+  });
+}
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/AppBar/AppBar.js
+var AppBar = __webpack_require__(5258);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Grid/Grid.js
+var Grid = __webpack_require__(1749);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/Toolbar/Toolbar.js
+var Toolbar = __webpack_require__(8358);
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/esm/IconButton/IconButton.js + 4 modules
+var IconButton = __webpack_require__(1554);
+;// CONCATENATED MODULE: external "@material-ui/icons/Menu"
+var Menu_namespaceObject = require("@material-ui/icons/Menu");;
+var Menu_default = /*#__PURE__*/__webpack_require__.n(Menu_namespaceObject);
+;// CONCATENATED MODULE: ./src/organisms/CabecarioMobile.jsx
+
+
+
+
+
+
+
+
+
+
+function CabecarioMobile() {
+  return /*#__PURE__*/jsx_runtime_.jsx(AppBar/* default */.Z, {
+    position: "static",
+    children: /*#__PURE__*/jsx_runtime_.jsx(Toolbar/* default */.Z, {
+      children: /*#__PURE__*/(0,jsx_runtime_.jsxs)(Grid/* default */.Z, {
+        container: true,
+        justify: "space-between",
+        alignItems: "center",
+        children: [/*#__PURE__*/jsx_runtime_.jsx(Grid/* default */.Z, {
+          item: true,
+          children: /*#__PURE__*/jsx_runtime_.jsx(IconButton/* default */.Z, {
+            edge: "start",
+            color: "inherit",
+            "aria-label": "menu",
+            children: /*#__PURE__*/jsx_runtime_.jsx((Menu_default()), {})
+          })
+        }), /*#__PURE__*/jsx_runtime_.jsx(Typography/* default */.Z, {
+          variant: "h6",
+          children: "Chocolates e Cia"
+        }), /*#__PURE__*/jsx_runtime_.jsx(Grid/* default */.Z, {
+          item: true,
+          children: /*#__PURE__*/jsx_runtime_.jsx(BtnLoginLogout, {})
+        })]
+      })
+    })
+  });
+}
+;// CONCATENATED MODULE: ./src/templates/Cabecario.jsx
+
+
+
+
+
+
+
+
+const Cabecario_useStyles = makeStyles_default()(() => ({
+  root: {
+    backgroundColor: tema/* primary */.T$
+  }
+}));
+function Cabecario() {
+  const classes = Cabecario_useStyles();
+  return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+    className: classes.root,
+    children: [/*#__PURE__*/jsx_runtime_.jsx((external_react_responsive_default()), {
+      minDeviceWidth: 460,
+      children: /*#__PURE__*/jsx_runtime_.jsx(CabecarioDesktop, {})
+    }), /*#__PURE__*/jsx_runtime_.jsx((external_react_responsive_default()), {
+      maxDeviceWidth: 460,
+      children: /*#__PURE__*/jsx_runtime_.jsx(CabecarioMobile, {})
     })]
   });
 }
@@ -290,6 +364,22 @@ module.exports = require("react");;
 
 /***/ }),
 
+/***/ 2268:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("react-dom");;
+
+/***/ }),
+
+/***/ 3810:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("react-transition-group");;
+
+/***/ }),
+
 /***/ 5282:
 /***/ (function(module) {
 
@@ -305,7 +395,7 @@ module.exports = require("react/jsx-runtime");;
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = __webpack_require__.X(0, [477,318,966], function() { return __webpack_exec__(286); });
+var __webpack_exports__ = __webpack_require__.X(0, [263,947,318,31,966], function() { return __webpack_exec__(745); });
 module.exports = __webpack_exports__;
 
 })();

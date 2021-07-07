@@ -5,8 +5,7 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core";
 import { AuthProvider } from "../atoms/firebase";
 import theme from "../atoms/tema";
-
-import Cabecario from "../organisms/Cabecario";
+import Cabecario from "../templates/Cabecario";
 
 // eslint-disable-next-line no-unused-vars
 function App({ Component, pageProps }) {
