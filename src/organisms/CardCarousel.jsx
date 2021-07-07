@@ -9,11 +9,8 @@ import Spinner from "../molecules/Spinner";
 
 const styles = makeStyles(() => ({
   CardStyle: {
-    marginTop: "0%",
-    paddingTop: "0%",
-    paddingLeft: "1rem",
-    paddingRight: "1rem",
-    paddingBottom: "0.5rem",
+    height: "150px",
+    width: "250px",
   },
   CardMediaStyle: {
     paddingBottom: "30%",
@@ -21,6 +18,10 @@ const styles = makeStyles(() => ({
   },
   CardContentStyle: {
     width: "80%",
+  },
+  ProdutoStyle: {
+    textAlign: "center",
+    fontSize: "12t",
   },
   PrecoStyle: {
     textAlign: "center",
@@ -41,7 +42,7 @@ export default function CardCarousel(props) {
               className={classes.CardMediaStyle}
             />
           </Suspense>
-          <Typography variant="h6" component="h6">
+          <Typography component="h6" className={classes.ProdutoStyle}>
             {ContentTitle}
           </Typography>
           <Typography component="p" className={classes.PrecoStyle}>

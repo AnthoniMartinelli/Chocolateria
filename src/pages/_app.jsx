@@ -25,6 +25,7 @@ function App({ Component, pageProps }) {
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
           />
+          <title>Chocolates E Cia</title>
         </Head>
         <Cabecario />
         <Component {...pageProps} />

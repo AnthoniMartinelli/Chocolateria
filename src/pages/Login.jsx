@@ -3,6 +3,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import Head from "next/head";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import PropTypes from "prop-types";
 import { withRouter, NextRouter } from "next/router";
@@ -142,71 +143,76 @@ class Login extends Component {
     } = this.state;
     const { classes } = this.props;
     return (
-      <Grid
-        container
-        justify="center"
-        alignItems="center"
-        className={classes.GridContainerStyle}
-      >
-        <Card>
-          <CardContent>
-            <form>
-              <Grid item>
-                <Typography variant="h4" className={classes.TextLoginStyle}>
-                  Login
-                </Typography>
-              </Grid>
-              <Grid item className={classes.GridEmailStyle}>
-                <TextField
-                  required
-                  label="Email"
-                  variant="standard"
-                  value={email}
-                  onChange={this.handlerEmailChange}
-                  error={erroEmail}
-                  helperText={msgErroEmail}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item className={classes.GridSenhaStyle}>
-                <TextField
-                  required
-                  label="Senha"
-                  variant="standard"
-                  type={tipoText}
-                  value={senha}
-                  onChange={this.handlerSenhaChange}
-                  error={erroSenha}
-                  helperText={msgErroSenha}
-                />
-                <Button
-                  className={classes.BtnIconeStyle}
-                  onClick={this.handlerBtnIconeClick}
-                >
-                  {iconeSenha}
-                </Button>
-              </Grid>
-              <Grid item className={classes.GridBtnLoginStyle}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={this.handlerBtnLoginClick}
-                >
-                  Fazer Login
-                </Button>
-              </Grid>
-              <Grid item>
-                <Typography>
-                  Não tem uma conta? Clique{" "}
-                  <Typography component="a" href="/SignIn">
-                    aqui
+      <>
+        <Head>
+          <title>Login</title>
+        </Head>
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          className={classes.GridContainerStyle}
+        >
+          <Card>
+            <CardContent>
+              <form>
+                <Grid item>
+                  <Typography variant="h4" className={classes.TextLoginStyle}>
+                    Login
                   </Typography>
-                </Typography>
-              </Grid>
-            </form>
-          </CardContent>
-        </Card>
-      </Grid>
+                </Grid>
+                <Grid item className={classes.GridEmailStyle}>
+                  <TextField
+                    required
+                    label="Email"
+                    variant="standard"
+                    value={email}
+                    onChange={this.handlerEmailChange}
+                    error={erroEmail}
+                    helperText={msgErroEmail}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item className={classes.GridSenhaStyle}>
+                  <TextField
+                    required
+                    label="Senha"
+                    variant="standard"
+                    type={tipoText}
+                    value={senha}
+                    onChange={this.handlerSenhaChange}
+                    error={erroSenha}
+                    helperText={msgErroSenha}
+                  />
+                  <Button
+                    className={classes.BtnIconeStyle}
+                    onClick={this.handlerBtnIconeClick}
+                  >
+                    {iconeSenha}
+                  </Button>
+                </Grid>
+                <Grid item className={classes.GridBtnLoginStyle}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={this.handlerBtnLoginClick}
+                  >
+                    Fazer Login
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Typography>
+                    Não tem uma conta? Clique{" "}
+                    <Typography component="a" href="/SignIn">
+                      aqui
+                    </Typography>
+                  </Typography>
+                </Grid>
+              </form>
+            </CardContent>
+          </Card>
+        </Grid>
+      </>
     );
   }
 }

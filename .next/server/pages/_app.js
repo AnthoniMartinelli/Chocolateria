@@ -30,7 +30,7 @@ const secondary = "#1de9b6";
 
 /***/ }),
 
-/***/ 1567:
+/***/ 286:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46,9 +46,9 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
-;// CONCATENATED MODULE: external "next/head"
-var head_namespaceObject = require("next/head");;
-var head_default = /*#__PURE__*/__webpack_require__.n(head_namespaceObject);
+// EXTERNAL MODULE: external "next/head"
+var head_ = __webpack_require__(701);
+var head_default = /*#__PURE__*/__webpack_require__.n(head_);
 // EXTERNAL MODULE: external "@material-ui/core"
 var core_ = __webpack_require__(1731);
 // EXTERNAL MODULE: ./src/atoms/firebase.jsx
@@ -206,6 +206,8 @@ function App({
         }), /*#__PURE__*/jsx_runtime_.jsx("link", {
           rel: "stylesheet",
           href: "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+        }), /*#__PURE__*/jsx_runtime_.jsx("title", {
+          children: "Chocolates E Cia"
         })]
       }), /*#__PURE__*/jsx_runtime_.jsx(Cabecario, {}), /*#__PURE__*/jsx_runtime_.jsx(Component, _objectSpread({}, pageProps))]
     })
@@ -264,6 +266,14 @@ module.exports = require("firebase");;
 
 /***/ }),
 
+/***/ 701:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("next/head");;
+
+/***/ }),
+
 /***/ 4229:
 /***/ (function(module) {
 
@@ -295,7 +305,7 @@ module.exports = require("react/jsx-runtime");;
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = __webpack_require__.X(0, [477,318,966], function() { return __webpack_exec__(1567); });
+var __webpack_exports__ = __webpack_require__.X(0, [477,318,966], function() { return __webpack_exec__(286); });
 module.exports = __webpack_exports__;
 
 })();
