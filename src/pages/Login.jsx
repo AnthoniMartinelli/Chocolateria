@@ -132,9 +132,10 @@ class Login extends Component {
   }
 
   handlerBtnLoginGoogleClick() {
-    const { loginGoogle } = this.context;
+    const { loginGoogle, currentUser } = this.context;
     const { router } = this.props;
     loginGoogle();
+    if (currentUser) return;
     router.push("/");
   }
 

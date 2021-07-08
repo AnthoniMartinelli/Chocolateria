@@ -18,10 +18,10 @@ const styles = makeStyles((theme) => ({
       paddingBottom: "30px",
     },
     [theme.breakpoints.up("md")]: {
-      paddingBottom: "80px",
+      paddingBottom: "0px",
     },
     [theme.breakpoints.up("lg")]: {
-      paddingBottom: "80px",
+      paddingBottom: "0px",
     },
   },
   CardContentStyle: {
