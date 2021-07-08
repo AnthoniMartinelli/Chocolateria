@@ -98,8 +98,9 @@ class Login extends Component {
     const { router } = this.props;
     const { login } = this.context;
     login(email, senha)
-      .then(() => {
-        router.push("/");
+      .then((user) => {
+        if (user.user.emailVerified) router.push("/");
+        else router.push("/VerificarEmail");
       })
       .catch((error) => {
         switch (error.code) {
@@ -122,6 +123,8 @@ class Login extends Component {
             });
             break;
           default:
+            console.log(error.code);
+            console.log(error.message);
             this.setState({
               erroEmail: true,
               msgErroEmail: "Um erro desconhecido ocorreu",

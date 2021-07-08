@@ -136,7 +136,7 @@ class SignIn extends Component {
     const { router } = this.props;
     criarConta(email, senha)
       .then(() => {
-        router.push("/");
+        router.push("/VerificarEmail");
       })
       .catch((error) => {
         switch (error.code) {
