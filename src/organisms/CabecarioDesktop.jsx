@@ -47,14 +47,6 @@ export default function CabecarioDesktop() {
         >
           Sobre nós
         </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classes.btnHeaderStyle}
-          onClick={() => router.push("/Encomende")}
-        >
-          Encomende
-        </Button>
       </Grid>
     </Grid>
   );

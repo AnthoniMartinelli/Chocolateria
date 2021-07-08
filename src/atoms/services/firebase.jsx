@@ -1,5 +1,6 @@
 import firebase from "firebase";
 import React, { useContext, useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import Spinner from "../../molecules/Spinner";
 
 const contexto = React.createContext();
@@ -18,55 +19,23 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-const initialize = firebase.initializeApp(firebaseConfig);
-
-/* export function LoginComEmailSenha(email, senha) {
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, senha)
-    .then((userCredentials) => {
-      const { user } = userCredentials;
-      console.log(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-    });
-}
-
-export function SignInComEmailSenha(email, senha) {
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, senha)
-    .then(({ user }) => {
-      // Signed in
-      const usuario = user;
-      const unique = usuario.uid;
-      console.log(unique);
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-      // ..
-    });
-} */
-
 export function usarAutenticacao() {
   return useContext(contexto);
 }
 
-// eslint-disable-next-line react/prop-types
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [pending, setPending] = useState(true);
+  let inicializar;
+  if (!firebase.apps.length) {
+    inicializar = firebase.initializeApp(firebaseConfig);
+  } else {
+    inicializar = firebase.app(); // if already initialized, use that one
+  }
+
   const auth = firebase.auth();
   useEffect(() => {
-    initialize.auth().onAuthStateChanged((user) => {
+    inicializar.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
       setPending(false);
     });
@@ -81,6 +50,11 @@ export function AuthProvider({ children }) {
 
   function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password);
+  }
+  // testar
+  function loginGoogle() {
+    const provider = auth.GoogleAuthProvider();
+    auth().signInWithPopup(provider);
   }
 
   function logout() {
@@ -98,15 +72,33 @@ export function AuthProvider({ children }) {
   function updatePassword(password) {
     return currentUser.updatePassword(password);
   }
+  // terminar
+  function verificarEmail(email) {
+    const actionCodeSettings = {
+      // URL you want to redirect back to. The domain (www.example.com) for this
+      // URL must be in the authorized domains list in the Firebase Console.
+      url: "http://localhost:3000/",
+      // This must be true.
+      handleCodeInApp: true,
+      dynamicLinkDomain: "http://localhost:3000/",
+    };
+    auth.sendSignInLinkToEmail(email, actionCodeSettings);
+  }
 
   const value = {
     currentUser,
     login,
+    loginGoogle,
     criarConta,
     logout,
     resetPassword,
     updateEmail,
     updatePassword,
+    verificarEmail,
   };
   return <contexto.Provider value={value}>{children}</contexto.Provider>;
 }
+
+AuthProvider.propTypes = {
+  children: PropTypes.element.isRequired,
+};

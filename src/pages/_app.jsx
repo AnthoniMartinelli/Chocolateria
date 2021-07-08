@@ -1,13 +1,13 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core";
+import PropTypes from "prop-types";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { AuthProvider } from "../atoms/services/firebase";
 import theme from "../atoms/tema";
 import Cabecario from "../templates/Cabecario";
 
-// eslint-disable-next-line no-unused-vars
 function App({ Component, pageProps }) {
   return (
     <AuthProvider>
@@ -26,11 +26,18 @@ function App({ Component, pageProps }) {
           />
           <title>Chocolates E Cia</title>
         </Head>
+        <CssBaseline />
         <Cabecario />
         <Component {...pageProps} />
       </ThemeProvider>
     </AuthProvider>
   );
 }
+
+App.propTypes = {
+  Component: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  pageProps: PropTypes.object.isRequired,
+};
 
 export default App;

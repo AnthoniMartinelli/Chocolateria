@@ -10,8 +10,7 @@
                 "semi": true,
                 "singleQuote": false
             }
-        ],
-        "linebreak-style": ["error", "windows"]
+        ]
     },
     "parser": "babel-eslint",
     "env": {

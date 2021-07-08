@@ -1,12 +1,9 @@
 {
-  "/About": "pages/About.html",
-  "/Encomende": "pages/Encomende.html",
-  "/Login": "pages/Login.html",
-  "/Produtos": "pages/Produtos.html",
-  "/SignIn": "pages/SignIn.html",
   "/_app": "pages/_app.js",
-  "/": "pages/index.html",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/_error": "pages/_error.js",
+  "/Produtos": "pages/Produtos.js",
+  "/About": "pages/About.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/": "pages/index.js"
 }

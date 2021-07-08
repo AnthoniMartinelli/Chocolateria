@@ -13,7 +13,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DescriptionIcon from "@material-ui/icons/Description";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useRouter } from "next/dist/client/router";
 import { makeStyles } from "@material-ui/core";
 import BtnLoginLogout from "../molecules/BtnLoginLogout";
@@ -43,6 +42,8 @@ export default function CabecarioMobile() {
         <Grid container justify="space-between" alignItems="center">
           <Grid item>
             <SwipeableDrawer
+              onClose={() => {}}
+              onOpen={() => {}}
               classes={{ paper: classes.DrawerStyle }}
               ModalProps={{ onBackdropClick: fecharMenu }}
               open={menu}
@@ -65,12 +66,6 @@ export default function CabecarioMobile() {
                     <DescriptionIcon />
                   </ListItemIcon>
                   <ListItemText primary="Sobre Nós" />
-                </ListItem>
-                <ListItem button onClick={() => router.push("/Encomende")}>
-                  <ListItemIcon>
-                    <ShoppingCartIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Encomende" />
                 </ListItem>
               </List>
             </SwipeableDrawer>
