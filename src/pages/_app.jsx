@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core";
 import PropTypes from "prop-types";
@@ -9,6 +9,12 @@ import theme from "../atoms/tema";
 import Cabecario from "../templates/Cabecario";
 
 function App({ Component, pageProps }) {
+  useEffect(() => {
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
   return (
     <AuthProvider>
       <ThemeProvider theme={theme}>
@@ -35,7 +41,8 @@ function App({ Component, pageProps }) {
 }
 
 App.propTypes = {
-  Component: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  Component: PropTypes.any.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   pageProps: PropTypes.object.isRequired,
 };

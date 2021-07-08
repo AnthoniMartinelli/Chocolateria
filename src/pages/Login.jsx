@@ -6,12 +6,11 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import Head from "next/head";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import PropTypes from "prop-types";
-import { withRouter, NextRouter } from "next/router";
+import { withRouter } from "next/router";
 import {
   Button,
   createStyles,
   Grid,
-  makeStyles,
   Typography,
   withStyles,
 } from "@material-ui/core";
@@ -62,6 +61,8 @@ class Login extends Component {
     this.handlerSenhaChange = this.handlerSenhaChange.bind(this);
     this.handlerBtnIconeClick = this.handlerBtnIconeClick.bind(this);
     this.handlerBtnLoginClick = this.handlerBtnLoginClick.bind(this);
+    this.handlerBtnLoginGoogleClick =
+      this.handlerBtnLoginGoogleClick.bind(this);
   }
 
   handlerEmailChange(event) {
@@ -128,6 +129,13 @@ class Login extends Component {
             break;
         }
       });
+  }
+
+  handlerBtnLoginGoogleClick() {
+    const { loginGoogle } = this.context;
+    const { router } = this.props;
+    loginGoogle();
+    router.push("/");
   }
 
   render() {
@@ -201,6 +209,17 @@ class Login extends Component {
                   </Button>
                 </Grid>
                 <Grid item>
+                  <Grid item className={classes.GridBtnLoginStyle}>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={this.handlerBtnLoginGoogleClick}
+                    >
+                      Login Com Google
+                    </Button>
+                  </Grid>
+                </Grid>
+                <Grid item>
                   <Typography>
                     Não tem uma conta? Clique{" "}
                     <Typography component="a" href="/SignIn">
@@ -218,8 +237,9 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  classes: PropTypes.instanceOf(makeStyles()).isRequired,
-  router: PropTypes.instanceOf(NextRouter).isRequired,
+  classes: PropTypes.instanceOf(Object).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  router: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(withRouter(Login));

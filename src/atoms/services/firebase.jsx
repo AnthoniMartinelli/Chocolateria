@@ -53,8 +53,22 @@ export function AuthProvider({ children }) {
   }
   // testar
   function loginGoogle() {
-    const provider = auth.GoogleAuthProvider();
-    auth().signInWithPopup(provider);
+    // define com o que vai logar
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth
+      .signInWithRedirect(provider)
+      .then(({ user }) => {
+        console.log(user);
+      })
+      .catch(({ code, message, email, credential }) => {
+        console.log(code);
+        console.log(message);
+        console.log(email);
+        console.log(credential);
+      });
+  }
+  function loginGoogleRedirect() {
+    return auth.getRedirectResult();
   }
 
   function logout() {
@@ -89,6 +103,7 @@ export function AuthProvider({ children }) {
     currentUser,
     login,
     loginGoogle,
+    loginGoogleRedirect,
     criarConta,
     logout,
     resetPassword,
