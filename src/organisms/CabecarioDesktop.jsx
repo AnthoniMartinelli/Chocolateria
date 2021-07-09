@@ -1,9 +1,10 @@
 import { Button, Grid } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Typography from "@material-ui/core/Typography";
+import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/dist/client/router";
 import BtnLoginLogout from "../molecules/BtnLoginLogout";
+import logo from "../atoms/img/logo.jpg";
 
 const useStyles = makeStyles(() => ({
   btnHeaderStyle: {
@@ -19,7 +20,7 @@ export default function CabecarioDesktop() {
   return (
     <Grid container justify="space-between">
       <Grid item xs={6}>
-        <Typography>Chocolates e Cia</Typography>
+        <Image title="logo Chocolate E Cia" src={logo} />
       </Grid>
       <Grid item xs={6}>
         <BtnLoginLogout />

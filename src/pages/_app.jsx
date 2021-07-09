@@ -32,6 +32,7 @@ function App({ Component, pageProps }) {
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
           />
           <title>Chocolates E Cia</title>
+          <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
         <CssBaseline />
         <Cabecario />
