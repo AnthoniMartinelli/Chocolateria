@@ -10,18 +10,18 @@ import Spinner from "../molecules/Spinner";
 const styles = makeStyles((theme) => ({
   CardStyle: {
     display: "flex",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#f57c00",
     [theme.breakpoints.up("xs")]: {
-      paddingBottom: "0",
+      paddingBottom: "0px",
     },
     [theme.breakpoints.up("sm")]: {
-      paddingBottom: "30px",
+      paddingBottom: "0px",
     },
     [theme.breakpoints.up("md")]: {
-      paddingBottom: "80px",
+      paddingBottom: "0px",
     },
     [theme.breakpoints.up("lg")]: {
-      paddingBottom: "80px",
+      paddingBottom: "0px",
     },
   },
   CardContentStyle: {
@@ -46,7 +46,7 @@ const styles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       backgroundPosition: "right",
       height: "80%",
-      paddingBottom: "20%",
+      paddingBottom: "0px",
     },
     [theme.breakpoints.up("lg")]: {
       backgroundPosition: "right",
