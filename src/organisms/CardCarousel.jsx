@@ -1,11 +1,10 @@
-import React, { Suspense } from "react";
+import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import PropTypes from "prop-types";
 import { Grid, makeStyles } from "@material-ui/core";
-import Spinner from "../molecules/Spinner";
 
 const styles = makeStyles(() => ({
   CardStyle: {
@@ -35,13 +34,11 @@ export default function CardCarousel(props) {
     <Grid container item alignContent="stretch" justify="space-between">
       <Card className={classes.CardStyle}>
         <CardContent>
-          <Suspense fallback={<Spinner />}>
-            <CardMedia
-              title={CardMediaTitle}
-              image={CardMediaLink}
-              className={classes.CardMediaStyle}
-            />
-          </Suspense>
+          <CardMedia
+            title={CardMediaTitle}
+            image={CardMediaLink}
+            className={classes.CardMediaStyle}
+          />
           <Typography component="h6" className={classes.ProdutoStyle}>
             {ContentTitle}
           </Typography>

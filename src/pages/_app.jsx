@@ -23,6 +23,7 @@ function App({ Component, pageProps }) {
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width" />
           <meta http-Equiv="X-UA-Compatible" content="ie=edge" />
+          <link rel="shortcut icon" href="/favicon.ico" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -32,7 +33,6 @@ function App({ Component, pageProps }) {
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
           />
           <title>Chocolates E Cia</title>
-          <link rel="shortcut icon" href="/favicon.ico" />
         </Head>
         <CssBaseline />
         <Cabecario />
