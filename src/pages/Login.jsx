@@ -18,10 +18,16 @@ import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
 import { obterContexto } from "../atoms/services/firebase";
 import { background } from "../atoms/tema";
 
-const styles = () =>
+const styles = (theme) =>
   createStyles({
     CardStyle: {
       marginTop: "5%",
+      [theme.breakpoints.up("xs")]: {
+        marginBottom: "25%",
+      },
+      [theme.breakpoints.up("sm")]: {
+        marginBottom: "5%",
+      },
     },
     GridContainerStyle: {
       backgroundColor: background,

@@ -7,7 +7,9 @@ import BtnLoginLogout from "../molecules/BtnLoginLogout";
 
 const useStyles = makeStyles(() => ({
   btnHeaderStyle: {
+    marginLeft: "0.5%",
     marginRight: "1%",
+    marginTop: "0.5%",
   },
 }));
 
@@ -15,7 +17,7 @@ export default function CabecarioDesktop() {
   const classes = useStyles();
   const router = useRouter();
   return (
-    <Grid container spacing={2} justify="space-between">
+    <Grid container justify="space-between">
       <Grid item xs={6}>
         <Typography>Chocolates e Cia</Typography>
       </Grid>

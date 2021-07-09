@@ -9,17 +9,33 @@ import Button from "@material-ui/core/Button";
 import { usarAutenticacao } from "../atoms/services/firebase";
 import { background } from "../atoms/tema";
 
-const styles = makeStyles(() => ({
+const styles = makeStyles((theme) => ({
   GridStyle: {
     backgroundColor: background,
   },
   CardStyle: {
     marginTop: "5%",
     width: "50%",
+    [theme.breakpoints.up("xs")]: {
+      marginBottom: "65%",
+    },
+    [theme.breakpoints.up("sm")]: {
+      marginBottom: "25%",
+    },
+    [theme.breakpoints.up("md")]: {
+      marginBottom: "15%",
+    },
   },
   BtnStyle: {
+    fontSize: "0.5rem",
     marginTop: "10%",
     width: "50%",
+    [theme.breakpoints.up("xs")]: {
+      fontSize: "0.5rem",
+    },
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "1rem",
+    },
   },
   TextStyle: {
     marginTop: "5%",

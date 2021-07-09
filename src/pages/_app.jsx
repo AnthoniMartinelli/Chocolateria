@@ -7,6 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { AuthProvider } from "../atoms/services/firebase";
 import theme from "../atoms/tema";
 import Cabecario from "../templates/Cabecario";
+import Rodape from "../molecules/Rodape";
 
 function App({ Component, pageProps }) {
   useEffect(() => {
@@ -35,6 +36,7 @@ function App({ Component, pageProps }) {
         <CssBaseline />
         <Cabecario />
         <Component {...pageProps} />
+        <Rodape />
       </ThemeProvider>
     </AuthProvider>
   );

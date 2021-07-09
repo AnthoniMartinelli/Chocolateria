@@ -13,15 +13,21 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core";
-import { withRouter, NextRouter } from "next/router";
+import { withRouter } from "next/router";
 import { obterContexto } from "../atoms/services/firebase";
 import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
 import { background } from "../atoms/tema";
 
-const styles = () =>
+const styles = (theme) =>
   createStyles({
     CardStyle: {
       marginTop: "5%",
+      [theme.breakpoints.up("xs")]: {
+        marginBottom: "20%",
+      },
+      [theme.breakpoints.up("sm")]: {
+        marginBottom: "5%",
+      },
     },
     GridContainerStyle: {
       backgroundColor: background,
@@ -273,7 +279,8 @@ class SignIn extends Component {
 SignIn.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
-  router: PropTypes.instanceOf(NextRouter).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  router: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(withRouter(SignIn));

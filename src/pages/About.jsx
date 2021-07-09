@@ -11,6 +11,7 @@ const styles = makeStyles(() => ({
   CardStyle: {
     width: "50%",
     marginTop: "5%",
+    marginBottom: "5%",
   },
   GridStyle: {
     backgroundColor: background,
@@ -33,8 +34,10 @@ function Aboutus() {
       >
         <Card className={classes.CardStyle}>
           <CardContent>
-            <Typography variant="h5">Nos Conheça</Typography>
-            <Typography>
+            <Typography variant="h5" align="center">
+              Nos Conheça
+            </Typography>
+            <Typography align="justify">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi nemo
               dolorum molestiae similique incidunt obcaecati dignissimos veniam
               at eum in ipsa neque, asperiores rem quae corrupti dicta ab
