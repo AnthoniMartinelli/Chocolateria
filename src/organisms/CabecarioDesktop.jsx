@@ -7,7 +7,7 @@ import BtnLoginLogout from "../molecules/BtnLoginLogout";
 
 const useStyles = makeStyles(() => ({
   btnHeaderStyle: {
-    marginLeft: "1%",
+    marginRight: "1%",
   },
 }));
 

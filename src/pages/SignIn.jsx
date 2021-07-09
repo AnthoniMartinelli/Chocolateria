@@ -16,11 +16,15 @@ import {
 import { withRouter, NextRouter } from "next/router";
 import { obterContexto } from "../atoms/services/firebase";
 import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
+import { background } from "../atoms/tema";
 
 const styles = () =>
   createStyles({
-    GridContainerStyle: {
+    CardStyle: {
       marginTop: "5%",
+    },
+    GridContainerStyle: {
+      backgroundColor: background,
     },
     TextLoginStyle: {
       marginBottom: "3rem",
@@ -184,7 +188,7 @@ class SignIn extends Component {
           alignItems="center"
           className={classes.GridContainerStyle}
         >
-          <Card>
+          <Card className={classes.CardStyle}>
             <CardContent>
               <form>
                 <Grid item>

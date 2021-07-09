@@ -7,8 +7,12 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { usarAutenticacao } from "../atoms/services/firebase";
+import { background } from "../atoms/tema";
 
 const styles = makeStyles(() => ({
+  GridStyle: {
+    backgroundColor: background,
+  },
   CardStyle: {
     marginTop: "5%",
     width: "50%",
@@ -40,7 +44,13 @@ export default function VerificarEmail() {
     verificarEmail();
   }
   return (
-    <Grid container item alignItems="center" justify="center">
+    <Grid
+      container
+      item
+      alignItems="center"
+      justify="center"
+      className={classes.GridStyle}
+    >
       <Card className={classes.CardStyle}>
         <CardContent>
           <Grid container direction="column">

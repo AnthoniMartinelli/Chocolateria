@@ -8,11 +8,9 @@ export default createMuiTheme({
     secondary: {
       main: "#1de9b6",
     },
-    white: {
-      main: "#ffffff",
-    },
   },
 });
 
 export const primary = "#852508";
+export const background = "#a13800";
 export const secondary = "#1de9b6";

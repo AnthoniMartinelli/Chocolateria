@@ -6,7 +6,7 @@ import { usarAutenticacao } from "../atoms/services/firebase";
 const useStyles = makeStyles(() => ({
   btnStyle: {
     float: "right",
-    marginRight: "1%",
+    marginRight: "2%",
   },
 }));
 

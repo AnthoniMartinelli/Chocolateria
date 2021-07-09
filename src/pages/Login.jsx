@@ -16,11 +16,15 @@ import {
 } from "@material-ui/core";
 import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
 import { obterContexto } from "../atoms/services/firebase";
+import { background } from "../atoms/tema";
 
 const styles = () =>
   createStyles({
-    GridContainerStyle: {
+    CardStyle: {
       marginTop: "5%",
+    },
+    GridContainerStyle: {
+      backgroundColor: background,
     },
     TextLoginStyle: {
       marginBottom: "3rem",
@@ -165,7 +169,7 @@ class Login extends Component {
           alignItems="center"
           className={classes.GridContainerStyle}
         >
-          <Card>
+          <Card className={classes.CardStyle}>
             <CardContent>
               <form>
                 <Grid item>
