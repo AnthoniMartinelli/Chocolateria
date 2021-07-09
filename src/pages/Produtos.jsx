@@ -12,10 +12,10 @@ const styles = makeStyles((theme) => ({
     marginTop: "1%",
     marginBottom: "1%",
     [theme.breakpoints.up("xs")]: {
-      marginLeft: "8%",
+      marginLeft: "20%",
     },
     [theme.breakpoints.up("sm")]: {
-      marginLeft: "8%",
+      marginLeft: "20%",
     },
     [theme.breakpoints.up("md")]: {
       marginLeft: "8%",

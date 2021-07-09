@@ -5,11 +5,21 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import PropTypes from "prop-types";
 import { Grid, makeStyles } from "@material-ui/core";
+import { useRouter } from "next/router";
 
-const styles = makeStyles(() => ({
+const styles = makeStyles((theme) => ({
   CardStyle: {
     height: "150px",
-    width: "250px",
+    width: "230px",
+    transition: "ease-in 0.5s",
+    [theme.breakpoints.up("lg")]: {
+      "&:hover": {
+        fontSize: "1.1rem",
+        transition: "ease-out 0.5s",
+        textDecoration: "underline",
+        width: "250px",
+      },
+    },
   },
   CardMediaStyle: {
     paddingBottom: "30%",
@@ -29,10 +39,17 @@ const styles = makeStyles(() => ({
 
 export default function CardCarousel(props) {
   const { CardMediaTitle, CardMediaLink, ContentTitle, ContentText } = props;
+  const router = useRouter();
   const classes = styles();
+
+  function handlerCardClick() {
+    const url = `/${CardMediaTitle}`;
+    router.push(url);
+  }
+
   return (
     <Grid container item alignContent="stretch" justify="space-between">
-      <Card className={classes.CardStyle}>
+      <Card className={classes.CardStyle} onClick={handlerCardClick}>
         <CardContent>
           <CardMedia
             title={CardMediaTitle}
