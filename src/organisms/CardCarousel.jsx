@@ -7,18 +7,16 @@ import PropTypes from "prop-types";
 import { Grid, makeStyles } from "@material-ui/core";
 import { useRouter } from "next/router";
 
-const styles = makeStyles((theme) => ({
+const styles = makeStyles(() => ({
   CardStyle: {
     height: "150px",
     width: "230px",
     transition: "ease-in 0.5s",
-    [theme.breakpoints.up("lg")]: {
-      "&:hover": {
-        fontSize: "1.1rem",
-        transition: "ease-out 0.5s",
-        textDecoration: "underline",
-        width: "250px",
-      },
+    "&:hover": {
+      fontSize: "1.1rem",
+      transition: "ease-out 0.5s",
+      textDecoration: "underline",
+      width: "250px",
     },
   },
   CardMediaStyle: {
@@ -43,7 +41,7 @@ export default function CardCarousel(props) {
   const classes = styles();
 
   function handlerCardClick() {
-    const url = `/${CardMediaTitle}`;
+    const url = `/${ContentTitle}`;
     router.push(url);
   }
 

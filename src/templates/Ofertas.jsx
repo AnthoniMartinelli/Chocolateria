@@ -7,7 +7,7 @@ const breakPoints = [
   { width: 558, itemsToShow: 2 },
   { width: 768, itemsToShow: 3 },
   { width: 1100, itemsToShow: 4 },
-  { width: 1280, itemsToShow: 6 },
+  /* { width: 1280, itemsToShow: 6 }, */
 ];
 
 export default function Ofertas() {
