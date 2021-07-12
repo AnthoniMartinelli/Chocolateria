@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
+import ListaProdutos from "../atoms/ListaProdutos";
 import CardCarousel from "../organisms/CardCarousel";
 import { background } from "../atoms/tema";
 
@@ -30,8 +31,17 @@ export default function Produtos() {
   const classes = styles();
   return (
     <Grid container className={classes.GridStyle}>
-      <Grid item className={classes.GridItemStyle} lg={3}>
-        <CardCarousel
+      {ListaProdutos.map((produto) => (
+        <Grid item className={classes.GridItemStyle} lg={3}>
+          <CardCarousel
+            CardMediaTitle={produto.tituloImg}
+            CardMediaLink={produto.imgLink}
+            ContentTitle={produto.nome}
+            ContentText={produto.preco}
+          />
+        </Grid>
+      ))}
+      {/* <CardCarousel
           CardMediaTitle="imagem Trufa Tradicional"
           CardMediaLink="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw3b56fa2a/medium/1000111_1.png"
           ContentTitle="Trufa Tradicional 30g"
@@ -101,7 +111,7 @@ export default function Produtos() {
           ContentTitle="Tablete ao leite 20g"
           ContentText="R$2,00"
         />
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }
