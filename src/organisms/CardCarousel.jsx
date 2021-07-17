@@ -44,7 +44,6 @@ export default function CardCarousel(props) {
     const url = `/${ContentTitle}`;
     router.push(url);
   }
-  console.log(props);
 
   return (
     <Grid container item alignContent="stretch" justify="space-between">

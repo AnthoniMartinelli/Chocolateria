@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import { v4 } from "uuid";
 import { makeStyles } from "@material-ui/core";
-/* import ListaProdutos from "../atoms/ListaProdutos"; */
+import Produto from "../atoms/Produto";
 import CardCarousel from "../organisms/CardCarousel";
 import { background } from "../atoms/tema";
 import { usarAutenticacao } from "../atoms/services/firebase";
@@ -32,14 +32,7 @@ const styles = makeStyles((theme) => ({
 export default function Produtos() {
   const classes = styles();
   const { todosProdutos } = usarAutenticacao();
-  const [prods, setProds] = useState([
-    {
-      tituloImg: "",
-      imgLink: "",
-      nome: "",
-      preco: "",
-    },
-  ]);
+  const [prods, setProds] = useState([new Produto("", "", "", "R$0,00", 0)]);
   useEffect(() => {
     setProds(todosProdutos);
   }, []);
@@ -47,11 +40,12 @@ export default function Produtos() {
     <Grid container className={classes.GridStyle}>
       {prods.map((produto) => (
         <Grid key={v4()} item className={classes.GridItemStyle} lg={3}>
+          {console.log(produto.ImagemTitulo)}
           <CardCarousel
-            CardMediaTitle={produto.tituloImg}
-            CardMediaLink={produto.imgLink}
-            ContentTitle={produto.nome}
-            ContentText={produto.preco}
+            CardMediaTitle={produto.ImagemTitulo}
+            CardMediaLink={produto.ImagemLink}
+            ContentTitle={produto.ProdutoNome}
+            ContentText={produto.Preco}
           />
         </Grid>
       ))}

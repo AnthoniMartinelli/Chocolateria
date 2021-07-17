@@ -77,17 +77,7 @@ export function AuthProvider({ children }) {
   function loginGoogle() {
     // define com o que vai logar
     const provider = new firebase.auth.GoogleAuthProvider();
-    auth
-      .signInWithRedirect(provider)
-      .then(({ user }) => {
-        console.log(user);
-      })
-      .catch(({ code, message, email, credential }) => {
-        console.log(code);
-        console.log(message);
-        console.log(email);
-        console.log(credential);
-      });
+    auth.signInWithRedirect(provider);
   }
   function loginGoogleRedirect() {
     return auth.getRedirectResult();
