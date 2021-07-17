@@ -2,6 +2,7 @@ import firebase from "firebase";
 import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Spinner from "../../molecules/Spinner";
+import Produto from "../Produto";
 
 const contexto = React.createContext();
 
@@ -26,12 +27,16 @@ export function usarAutenticacao() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [pending, setPending] = useState(true);
+  const [todosProdutos, setProdutos] = useState([
+    new Produto("", "", "", 0, 0),
+  ]);
   let inicializar;
   if (!firebase.apps.length) {
     inicializar = firebase.initializeApp(firebaseConfig);
   } else {
     inicializar = firebase.app(); // if already initialized, use that one
   }
+  const db = firebase.firestore();
 
   const auth = firebase.auth();
   useEffect(() => {
@@ -39,6 +44,23 @@ export function AuthProvider({ children }) {
       setCurrentUser(user);
       setPending(false);
     });
+    db.collection("produtos")
+      .get()
+      .then((querySnapshot) => {
+        const temp = [];
+        querySnapshot.forEach((doc) =>
+          temp.push(
+            new Produto(
+              doc.data().ImagemTitulo,
+              doc.data().ImagemLink,
+              doc.data().ProdutoNome,
+              doc.data().Preco,
+              doc.data().Quantidade
+            )
+          )
+        );
+        setProdutos(temp);
+      });
   }, []);
 
   if (pending) {
@@ -89,9 +111,13 @@ export function AuthProvider({ children }) {
   function verificarEmail() {
     currentUser.sendEmailVerification();
   }
+  function lerProdutos() {
+    return db.collection("produtos").get();
+  }
 
   const value = {
     currentUser,
+    todosProdutos,
     login,
     loginGoogle,
     loginGoogleRedirect,
@@ -100,6 +126,7 @@ export function AuthProvider({ children }) {
     resetPassword,
     updateEmail,
     updatePassword,
+    lerProdutos,
     verificarEmail,
   };
   return <contexto.Provider value={value}>{children}</contexto.Provider>;

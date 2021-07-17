@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import CardMedia from "@material-ui/core/CardMedia";
 import React, { useState, useEffect } from "react";
 import ListaProdutos from "../atoms/ListaProdutos";
 

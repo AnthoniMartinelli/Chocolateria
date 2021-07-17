@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-elastic-carousel";
+import { v4 } from "uuid";
 import CardCarousel from "../organisms/CardCarousel";
 import ListaProdutos from "../atoms/ListaProdutos";
 
@@ -16,6 +17,7 @@ export default function Ofertas() {
     <Carousel breakPoints={breakPoints} pagination={false}>
       {ListaProdutos.map((produto) => (
         <CardCarousel
+          key={v4()}
           CardMediaTitle={produto.tituloImg}
           CardMediaLink={produto.imgLink}
           ContentTitle={produto.nome}
