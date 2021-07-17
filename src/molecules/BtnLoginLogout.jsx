@@ -1,16 +1,18 @@
 import React from "react";
+import { useRouter } from "next/dist/client/router";
 import { Button, makeStyles } from "@material-ui/core";
-import { usarAutenticacao } from "../atoms/firebase";
+import { usarAutenticacao } from "../atoms/services/firebase";
 
 const useStyles = makeStyles(() => ({
   btnStyle: {
     float: "right",
-    marginRight: "1%",
+    marginRight: "2%",
   },
 }));
 
 export default function BtnLoginLogout() {
   const classes = useStyles();
+  const router = useRouter();
   const { currentUser, logout } = usarAutenticacao();
   if (currentUser) {
     return (
@@ -20,7 +22,7 @@ export default function BtnLoginLogout() {
         className={classes.btnStyle}
         onClick={() => {
           logout();
-          window.location.href = "/";
+          router.push("/");
         }}
       >
         Sair

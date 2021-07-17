@@ -7,10 +7,8 @@ npm install
 
 ### para rodar o projeto
 ```
-npm run build
+npm run dev
 ```
-```
-npm start
-```
+
 ### Descrição.
 Site feito para treinar react

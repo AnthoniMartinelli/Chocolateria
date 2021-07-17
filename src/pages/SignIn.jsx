@@ -4,6 +4,7 @@ import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import Head from "next/head";
 import PropTypes from "prop-types";
 import {
   Button,
@@ -12,14 +13,24 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core";
-import { withRouter, NextRouter } from "next/router";
-import { obterContexto } from "../atoms/firebase";
+import { withRouter } from "next/router";
+import { obterContexto } from "../atoms/services/firebase";
 import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
+import { background } from "../atoms/tema";
 
-const styles = () =>
+const styles = (theme) =>
   createStyles({
-    GridContainerStyle: {
+    CardStyle: {
       marginTop: "5%",
+      [theme.breakpoints.up("xs")]: {
+        marginBottom: "20%",
+      },
+      [theme.breakpoints.up("sm")]: {
+        marginBottom: "5%",
+      },
+    },
+    GridContainerStyle: {
+      backgroundColor: background,
     },
     TextLoginStyle: {
       marginBottom: "3rem",
@@ -135,7 +146,7 @@ class SignIn extends Component {
     const { router } = this.props;
     criarConta(email, senha)
       .then(() => {
-        router.push("/");
+        router.push("/VerificarEmail");
       })
       .catch((error) => {
         switch (error.code) {
@@ -173,89 +184,94 @@ class SignIn extends Component {
     } = this.state;
     const { classes } = this.props;
     return (
-      <Grid
-        container
-        justify="center"
-        alignItems="center"
-        className={classes.GridContainerStyle}
-      >
-        <Card>
-          <CardContent>
-            <form>
-              <Grid item>
-                <Typography variant="h4" className={classes.TextLoginStyle}>
-                  Criar Conta
-                </Typography>
-              </Grid>
-              <Grid item className={classes.GridEmailStyle}>
-                <TextField
-                  required
-                  label="Email"
-                  variant="standard"
-                  value={email}
-                  onChange={this.handlerEmailChange}
-                  error={erroEmail}
-                  helperText={msgErroEmail}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item className={classes.GridSenhaStyle}>
-                <TextField
-                  required
-                  label="Senha"
-                  variant="standard"
-                  type={tipoTextSenha}
-                  value={senha}
-                  error={erroSenha}
-                  helperText={msgErroSenha}
-                  onChange={this.handlerSenhaChange}
-                />
-                <Button
-                  className={classes.BtnIconeStyle}
-                  onClick={this.handlerBtnIconeSenhaClick}
-                >
-                  {iconeSenha}
-                </Button>
-              </Grid>
-              <Grid item className={classes.GridSenhaStyle}>
-                <TextField
-                  required
-                  label="Confirme senha"
-                  variant="standard"
-                  type={tipoTextConfirmar}
-                  value={confirmarSenha}
-                  error={erroConfirmar}
-                  helperText={msgErroConfirmar}
-                  onChange={this.handlerConfirmarSenhaChange}
-                />
-                <Button
-                  className={classes.BtnIconeStyle}
-                  onClick={this.handlerBtnIconeConfirmarClick}
-                >
-                  {iconeConfirmar}
-                </Button>
-              </Grid>
-              <Grid item className={classes.GridBtnLoginStyle}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={this.handlerBtnSignInClick}
-                >
-                  Criar Conta
-                </Button>
-              </Grid>
-              <Grid item>
-                <Typography>
-                  Já tem uma conta? Clique{" "}
-                  <Typography component="a" href="/Login">
-                    aqui
+      <>
+        <Head>
+          <title>Criar Conta</title>
+        </Head>
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          className={classes.GridContainerStyle}
+        >
+          <Card className={classes.CardStyle}>
+            <CardContent>
+              <form>
+                <Grid item>
+                  <Typography variant="h4" className={classes.TextLoginStyle}>
+                    Criar Conta
                   </Typography>
-                </Typography>
-              </Grid>
-            </form>
-          </CardContent>
-        </Card>
-      </Grid>
+                </Grid>
+                <Grid item className={classes.GridEmailStyle}>
+                  <TextField
+                    required
+                    label="Email"
+                    variant="standard"
+                    value={email}
+                    onChange={this.handlerEmailChange}
+                    error={erroEmail}
+                    helperText={msgErroEmail}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item className={classes.GridSenhaStyle}>
+                  <TextField
+                    required
+                    label="Senha"
+                    variant="standard"
+                    type={tipoTextSenha}
+                    value={senha}
+                    error={erroSenha}
+                    helperText={msgErroSenha}
+                    onChange={this.handlerSenhaChange}
+                  />
+                  <Button
+                    className={classes.BtnIconeStyle}
+                    onClick={this.handlerBtnIconeSenhaClick}
+                  >
+                    {iconeSenha}
+                  </Button>
+                </Grid>
+                <Grid item className={classes.GridSenhaStyle}>
+                  <TextField
+                    required
+                    label="Confirme senha"
+                    variant="standard"
+                    type={tipoTextConfirmar}
+                    value={confirmarSenha}
+                    error={erroConfirmar}
+                    helperText={msgErroConfirmar}
+                    onChange={this.handlerConfirmarSenhaChange}
+                  />
+                  <Button
+                    className={classes.BtnIconeStyle}
+                    onClick={this.handlerBtnIconeConfirmarClick}
+                  >
+                    {iconeConfirmar}
+                  </Button>
+                </Grid>
+                <Grid item className={classes.GridBtnLoginStyle}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={this.handlerBtnSignInClick}
+                  >
+                    Criar Conta
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Typography>
+                    Já tem uma conta? Clique{" "}
+                    <Typography component="a" href="/Login">
+                      aqui
+                    </Typography>
+                  </Typography>
+                </Grid>
+              </form>
+            </CardContent>
+          </Card>
+        </Grid>
+      </>
     );
   }
 }
@@ -263,7 +279,8 @@ class SignIn extends Component {
 SignIn.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
-  router: PropTypes.instanceOf(NextRouter).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  router: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(withRouter(SignIn));

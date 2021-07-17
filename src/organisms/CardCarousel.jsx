@@ -1,19 +1,23 @@
-import React, { Suspense } from "react";
+import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import PropTypes from "prop-types";
 import { Grid, makeStyles } from "@material-ui/core";
-import Spinner from "../molecules/Spinner";
+import { useRouter } from "next/router";
 
 const styles = makeStyles(() => ({
   CardStyle: {
-    marginTop: "0%",
-    paddingTop: "0%",
-    paddingLeft: "1rem",
-    paddingRight: "1rem",
-    paddingBottom: "0.5rem",
+    height: "150px",
+    width: "230px",
+    transition: "ease-in 0.5s",
+    "&:hover": {
+      fontSize: "1.1rem",
+      transition: "ease-out 0.5s",
+      textDecoration: "underline",
+      width: "250px",
+    },
   },
   CardMediaStyle: {
     paddingBottom: "30%",
@@ -22,6 +26,10 @@ const styles = makeStyles(() => ({
   CardContentStyle: {
     width: "80%",
   },
+  ProdutoStyle: {
+    textAlign: "center",
+    fontSize: "12t",
+  },
   PrecoStyle: {
     textAlign: "center",
   },
@@ -29,19 +37,25 @@ const styles = makeStyles(() => ({
 
 export default function CardCarousel(props) {
   const { CardMediaTitle, CardMediaLink, ContentTitle, ContentText } = props;
+  const router = useRouter();
   const classes = styles();
+
+  function handlerCardClick() {
+    const url = `/${ContentTitle}`;
+    router.push(url);
+  }
+  console.log(props);
+
   return (
     <Grid container item alignContent="stretch" justify="space-between">
-      <Card className={classes.CardStyle}>
+      <Card className={classes.CardStyle} onClick={handlerCardClick}>
         <CardContent>
-          <Suspense fallback={<Spinner />}>
-            <CardMedia
-              title={CardMediaTitle}
-              image={CardMediaLink}
-              className={classes.CardMediaStyle}
-            />
-          </Suspense>
-          <Typography variant="h6" component="h6">
+          <CardMedia
+            title={CardMediaTitle}
+            image={CardMediaLink}
+            className={classes.CardMediaStyle}
+          />
+          <Typography component="h6" className={classes.ProdutoStyle}>
             {ContentTitle}
           </Typography>
           <Typography component="p" className={classes.PrecoStyle}>

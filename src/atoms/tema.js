@@ -12,4 +12,5 @@ export default createMuiTheme({
 });
 
 export const primary = "#852508";
+export const background = "#a13800";
 export const secondary = "#1de9b6";

@@ -3,24 +3,34 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import Head from "next/head";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import PropTypes from "prop-types";
-import { withRouter, NextRouter } from "next/router";
+import { withRouter } from "next/router";
 import {
   Button,
   createStyles,
   Grid,
-  makeStyles,
   Typography,
   withStyles,
 } from "@material-ui/core";
 import { verificarEmail, verificarSenha } from "../atoms/Verificacao";
-import { obterContexto } from "../atoms/firebase";
+import { obterContexto } from "../atoms/services/firebase";
+import { background } from "../atoms/tema";
 
-const styles = () =>
+const styles = (theme) =>
   createStyles({
-    GridContainerStyle: {
+    CardStyle: {
       marginTop: "5%",
+      [theme.breakpoints.up("xs")]: {
+        marginBottom: "25%",
+      },
+      [theme.breakpoints.up("sm")]: {
+        marginBottom: "5%",
+      },
+    },
+    GridContainerStyle: {
+      backgroundColor: background,
     },
     TextLoginStyle: {
       marginBottom: "3rem",
@@ -61,6 +71,8 @@ class Login extends Component {
     this.handlerSenhaChange = this.handlerSenhaChange.bind(this);
     this.handlerBtnIconeClick = this.handlerBtnIconeClick.bind(this);
     this.handlerBtnLoginClick = this.handlerBtnLoginClick.bind(this);
+    this.handlerBtnLoginGoogleClick =
+      this.handlerBtnLoginGoogleClick.bind(this);
   }
 
   handlerEmailChange(event) {
@@ -96,8 +108,9 @@ class Login extends Component {
     const { router } = this.props;
     const { login } = this.context;
     login(email, senha)
-      .then(() => {
-        router.push("/");
+      .then((user) => {
+        if (user.user.emailVerified) router.push("/");
+        else router.push("/VerificarEmail");
       })
       .catch((error) => {
         switch (error.code) {
@@ -120,6 +133,8 @@ class Login extends Component {
             });
             break;
           default:
+            console.log(error.code);
+            console.log(error.message);
             this.setState({
               erroEmail: true,
               msgErroEmail: "Um erro desconhecido ocorreu",
@@ -127,6 +142,14 @@ class Login extends Component {
             break;
         }
       });
+  }
+
+  handlerBtnLoginGoogleClick() {
+    const { loginGoogle, currentUser } = this.context;
+    const { router } = this.props;
+    loginGoogle();
+    if (currentUser) return;
+    router.push("/");
   }
 
   render() {
@@ -142,78 +165,95 @@ class Login extends Component {
     } = this.state;
     const { classes } = this.props;
     return (
-      <Grid
-        container
-        justify="center"
-        alignItems="center"
-        className={classes.GridContainerStyle}
-      >
-        <Card>
-          <CardContent>
-            <form>
-              <Grid item>
-                <Typography variant="h4" className={classes.TextLoginStyle}>
-                  Login
-                </Typography>
-              </Grid>
-              <Grid item className={classes.GridEmailStyle}>
-                <TextField
-                  required
-                  label="Email"
-                  variant="standard"
-                  value={email}
-                  onChange={this.handlerEmailChange}
-                  error={erroEmail}
-                  helperText={msgErroEmail}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item className={classes.GridSenhaStyle}>
-                <TextField
-                  required
-                  label="Senha"
-                  variant="standard"
-                  type={tipoText}
-                  value={senha}
-                  onChange={this.handlerSenhaChange}
-                  error={erroSenha}
-                  helperText={msgErroSenha}
-                />
-                <Button
-                  className={classes.BtnIconeStyle}
-                  onClick={this.handlerBtnIconeClick}
-                >
-                  {iconeSenha}
-                </Button>
-              </Grid>
-              <Grid item className={classes.GridBtnLoginStyle}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={this.handlerBtnLoginClick}
-                >
-                  Fazer Login
-                </Button>
-              </Grid>
-              <Grid item>
-                <Typography>
-                  Não tem uma conta? Clique{" "}
-                  <Typography component="a" href="/SignIn">
-                    aqui
+      <>
+        <Head>
+          <title>Login</title>
+        </Head>
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          className={classes.GridContainerStyle}
+        >
+          <Card className={classes.CardStyle}>
+            <CardContent>
+              <form>
+                <Grid item>
+                  <Typography variant="h4" className={classes.TextLoginStyle}>
+                    Login
                   </Typography>
-                </Typography>
-              </Grid>
-            </form>
-          </CardContent>
-        </Card>
-      </Grid>
+                </Grid>
+                <Grid item className={classes.GridEmailStyle}>
+                  <TextField
+                    required
+                    label="Email"
+                    variant="standard"
+                    value={email}
+                    onChange={this.handlerEmailChange}
+                    error={erroEmail}
+                    helperText={msgErroEmail}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item className={classes.GridSenhaStyle}>
+                  <TextField
+                    required
+                    label="Senha"
+                    variant="standard"
+                    type={tipoText}
+                    value={senha}
+                    onChange={this.handlerSenhaChange}
+                    error={erroSenha}
+                    helperText={msgErroSenha}
+                  />
+                  <Button
+                    className={classes.BtnIconeStyle}
+                    onClick={this.handlerBtnIconeClick}
+                  >
+                    {iconeSenha}
+                  </Button>
+                </Grid>
+                <Grid item className={classes.GridBtnLoginStyle}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={this.handlerBtnLoginClick}
+                  >
+                    Fazer Login
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Grid item className={classes.GridBtnLoginStyle}>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      onClick={this.handlerBtnLoginGoogleClick}
+                    >
+                      Login Com Google
+                    </Button>
+                  </Grid>
+                </Grid>
+                <Grid item>
+                  <Typography>
+                    Não tem uma conta? Clique{" "}
+                    <Typography component="a" href="/SignIn">
+                      aqui
+                    </Typography>
+                  </Typography>
+                </Grid>
+              </form>
+            </CardContent>
+          </Card>
+        </Grid>
+      </>
     );
   }
 }
 
 Login.propTypes = {
-  classes: PropTypes.instanceOf(makeStyles()).isRequired,
-  router: PropTypes.instanceOf(NextRouter).isRequired,
+  classes: PropTypes.instanceOf(Object).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  router: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(withRouter(Login));
