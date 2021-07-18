@@ -12,7 +12,9 @@ const styles = makeStyles(() => ({
     height: "150px",
     width: "230px",
     transition: "ease-in 0.5s",
+    cursor: "default",
     "&:hover": {
+      cursor: "pointer",
       fontSize: "1.1rem",
       transition: "ease-out 0.5s",
       textDecoration: "underline",
