@@ -108,7 +108,7 @@ export function AuthProvider({ children }) {
         const temp = [];
         let i = 0;
         querySnapshot.forEach((doc) => {
-          if (quantidade >= i)
+          if (quantidade > i)
             temp.push(
               new Produto(
                 doc.data().ImagemTitulo,

@@ -3,13 +3,26 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import Head from "next/head";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
 import ProdutoClasse from "../atoms/Produto";
 import { usarAutenticacao } from "../atoms/services/firebase";
 import CardImagemGrande from "../molecules/CardImagemGrande";
+import { background } from "../atoms/tema";
+import Ofertas from "../templates/Ofertas";
+import CardDadosProduto from "../molecules/CardDadosProduto";
 
 const styles = makeStyles(() => ({
+  BackgroundStyle: {
+    backgroundColor: background,
+  },
+  GridItemStyle: {
+    height: "80%",
+  },
+  CardStyle: {
+    marginTop: "3%",
+    height: "100%",
+    paddingBottom: "58.5%",
+  },
   TypographyNomeStyle: {
     marginTop: "5rem",
     marginBottom: "5rem",
@@ -20,13 +33,13 @@ export default function Produto() {
   const classes = styles();
   const { lerProdutos } = usarAutenticacao();
   const router = useRouter();
-  const { produto } = router.query;
+  let { produto } = router.query;
+  produto = produto.replace("$", "%");
   const [produtoCerto, setprodutoCerto] = useState(
     new ProdutoClasse("", "", "", "", 0)
   );
   useEffect(() => {
     lerProdutos().then((res) => {
-      console.log(res);
       res.some((listaProduto) => {
         if (listaProduto.ProdutoNome === produto) {
           setprodutoCerto(listaProduto);
@@ -34,7 +47,6 @@ export default function Produto() {
         }
         return false;
       });
-      console.log(produtoCerto);
     });
   }, []);
 
@@ -43,36 +55,24 @@ export default function Produto() {
       <Head>
         <title>{produtoCerto.ProdutoNome} - Chocolateria E CIA</title>
       </Head>
-      <Grid container alignContent="space-between" justify="space-between">
-        <Grid item xs={6}>
-          <CardImagemGrande
-            imgTitulo={produtoCerto.ImagemTitulo}
-            imgLink={produtoCerto.ImagemLink}
-          />
-        </Grid>
-        <Grid container item xs={6} direction="column">
-          <Grid item>
-            <Typography
-              color="secondary"
-              align="center"
-              variant="h2"
-              className={classes.TypographyNomeStyle}
-            >
-              {produtoCerto.ProdutoNome}
-            </Typography>
-          </Grid>
-          <Grid container item alignItems="center" justify="center" spacing={5}>
-            <Grid item>
-              <Typography variant="h6">{produtoCerto.Preco}</Typography>
+      <div className={classes.BackgroundStyle}>
+        <Paper>
+          <Grid container alignContent="space-between" justify="space-between">
+            <Grid item className={classes.GridItemStyle}>
+              <CardImagemGrande
+                imgTitulo={produtoCerto.ImagemTitulo}
+                imgLink={produtoCerto.ImagemLink}
+              />
             </Grid>
             <Grid item>
-              <Button color="primary" variant="contained">
-                Comprar
-              </Button>
+              <CardDadosProduto produto={produtoCerto} />
             </Grid>
           </Grid>
-        </Grid>
-      </Grid>
+        </Paper>
+      </div>
+      <div className={classes.BackgroundStyle}>
+        <Ofertas />
+      </div>
     </>
   );
 }

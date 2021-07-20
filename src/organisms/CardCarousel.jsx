@@ -43,7 +43,7 @@ export default function CardCarousel(props) {
   const classes = styles();
 
   function handlerCardClick() {
-    const url = `/${ContentTitle}`;
+    const url = `/${ContentTitle.replace("%", "$")}`;
     router.push(url);
   }
 

@@ -17,7 +17,7 @@ export default function Ofertas() {
   const { lerQuantidadeProdutos } = usarAutenticacao();
   const [prods, setProds] = useState([new Produto("", "", "", "R$0,00", 0)]);
   useEffect(() => {
-    lerQuantidadeProdutos(9).then((res) => {
+    lerQuantidadeProdutos(8).then((res) => {
       setProds(res);
     });
   }, []);
