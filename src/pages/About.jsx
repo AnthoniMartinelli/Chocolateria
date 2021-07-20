@@ -23,7 +23,7 @@ function Aboutus() {
   return (
     <>
       <Head>
-        <title>Sobre nós</title>
+        <title>Sobre nós - Chocolateria E CIA</title>
       </Head>
       <Grid
         container

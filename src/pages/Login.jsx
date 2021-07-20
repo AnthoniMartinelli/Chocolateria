@@ -167,7 +167,7 @@ class Login extends Component {
     return (
       <>
         <Head>
-          <title>Login</title>
+          <title>Login - Chocolateria E CIA</title>
         </Head>
         <Grid
           container

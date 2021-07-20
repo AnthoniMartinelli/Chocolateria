@@ -27,9 +27,6 @@ export function usarAutenticacao() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [pending, setPending] = useState(true);
-  const [todosProdutos, setProdutos] = useState([
-    new Produto("", "", "", 0, 0),
-  ]);
   let inicializar;
   if (!firebase.apps.length) {
     inicializar = firebase.initializeApp(firebaseConfig);
@@ -44,23 +41,6 @@ export function AuthProvider({ children }) {
       setCurrentUser(user);
       setPending(false);
     });
-    db.collection("produtos")
-      .get()
-      .then((querySnapshot) => {
-        const temp = [];
-        querySnapshot.forEach((doc) =>
-          temp.push(
-            new Produto(
-              doc.data().ImagemTitulo,
-              doc.data().ImagemLink,
-              doc.data().ProdutoNome,
-              doc.data().Preco,
-              doc.data().Quantidade
-            )
-          )
-        );
-        setProdutos(temp);
-      });
   }, []);
 
   if (pending) {
@@ -73,7 +53,6 @@ export function AuthProvider({ children }) {
   function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password);
   }
-  // testar
   function loginGoogle() {
     // define com o que vai logar
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -102,12 +81,28 @@ export function AuthProvider({ children }) {
     currentUser.sendEmailVerification();
   }
   function lerProdutos() {
-    return db.collection("produtos").get();
+    return db
+      .collection("produtos")
+      .get()
+      .then((querySnapshot) => {
+        const temp = [];
+        querySnapshot.forEach((doc) =>
+          temp.push(
+            new Produto(
+              doc.data().ImagemTitulo,
+              doc.data().ImagemLink,
+              doc.data().ProdutoNome,
+              doc.data().Preco,
+              doc.data().Quantidade
+            )
+          )
+        );
+        return temp;
+      });
   }
 
   const value = {
     currentUser,
-    todosProdutos,
     login,
     loginGoogle,
     loginGoogleRedirect,

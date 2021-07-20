@@ -186,7 +186,7 @@ class SignIn extends Component {
     return (
       <>
         <Head>
-          <title>Criar Conta</title>
+          <title>Criar Conta - Chocolateria E CIA</title>
         </Head>
         <Grid
           container
