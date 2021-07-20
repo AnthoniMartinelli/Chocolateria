@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-elastic-carousel";
 import { v4 } from "uuid";
+import Produto from "../atoms/Produto";
+import { usarAutenticacao } from "../atoms/services/firebase";
 import CardCarousel from "../organisms/CardCarousel";
-import ListaProdutos from "../atoms/ListaProdutos";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -13,15 +14,22 @@ const breakPoints = [
 ];
 
 export default function Ofertas() {
+  const { lerQuantidadeProdutos } = usarAutenticacao();
+  const [prods, setProds] = useState([new Produto("", "", "", "R$0,00", 0)]);
+  useEffect(() => {
+    lerQuantidadeProdutos(9).then((res) => {
+      setProds(res);
+    });
+  }, []);
   return (
     <Carousel breakPoints={breakPoints} pagination={false}>
-      {ListaProdutos.map((produto) => (
+      {prods.map((produto) => (
         <CardCarousel
           key={v4()}
-          CardMediaTitle={produto.tituloImg}
-          CardMediaLink={produto.imgLink}
-          ContentTitle={produto.nome}
-          ContentText={produto.preco}
+          CardMediaTitle={produto.ImagemTitulo}
+          CardMediaLink={produto.ImagemLink}
+          ContentTitle={produto.ProdutoNome}
+          ContentText={produto.Preco}
         />
       ))}
     </Carousel>

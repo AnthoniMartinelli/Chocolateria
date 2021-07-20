@@ -100,6 +100,29 @@ export function AuthProvider({ children }) {
         return temp;
       });
   }
+  function lerQuantidadeProdutos(quantidade) {
+    return db
+      .collection("produtos")
+      .get()
+      .then((querySnapshot) => {
+        const temp = [];
+        let i = 0;
+        querySnapshot.forEach((doc) => {
+          if (quantidade >= i)
+            temp.push(
+              new Produto(
+                doc.data().ImagemTitulo,
+                doc.data().ImagemLink,
+                doc.data().ProdutoNome,
+                doc.data().Preco,
+                doc.data().Quantidade
+              )
+            );
+          i += 1;
+        });
+        return temp;
+      });
+  }
 
   const value = {
     currentUser,
@@ -112,6 +135,7 @@ export function AuthProvider({ children }) {
     updateEmail,
     updatePassword,
     lerProdutos,
+    lerQuantidadeProdutos,
     verificarEmail,
   };
   return <contexto.Provider value={value}>{children}</contexto.Provider>;

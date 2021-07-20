@@ -5,7 +5,8 @@ import Head from "next/head";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import ListaProdutos from "../atoms/ListaProdutos";
+import ProdutoClasse from "../atoms/Produto";
+import { usarAutenticacao } from "../atoms/services/firebase";
 import CardImagemGrande from "../molecules/CardImagemGrande";
 
 const styles = makeStyles(() => ({
@@ -17,35 +18,36 @@ const styles = makeStyles(() => ({
 
 export default function Produto() {
   const classes = styles();
+  const { lerProdutos } = usarAutenticacao();
   const router = useRouter();
   const { produto } = router.query;
-  const [produtoCerto, setprodutoCerto] = useState({
-    tituloImg: "",
-    imgLink: "",
-    nome: "",
-    preco: "",
-  });
+  const [produtoCerto, setprodutoCerto] = useState(
+    new ProdutoClasse("", "", "", "", 0)
+  );
   useEffect(() => {
-    ListaProdutos.some((listaProduto) => {
-      if (listaProduto.nome === produto) {
-        setprodutoCerto(listaProduto);
-        return true;
-      }
-      return false;
+    lerProdutos().then((res) => {
+      console.log(res);
+      res.some((listaProduto) => {
+        if (listaProduto.ProdutoNome === produto) {
+          setprodutoCerto(listaProduto);
+          return true;
+        }
+        return false;
+      });
+      console.log(produtoCerto);
     });
-    console.log(produtoCerto);
   }, []);
 
   return (
     <>
       <Head>
-        <title>{produtoCerto.nome} - Chocolateria E CIA</title>
+        <title>{produtoCerto.ProdutoNome} - Chocolateria E CIA</title>
       </Head>
-      <Grid container>
-        <Grid item xs={6} alignContent="space-between" justify="space-between">
+      <Grid container alignContent="space-between" justify="space-between">
+        <Grid item xs={6}>
           <CardImagemGrande
-            imgTitulo={produtoCerto.tituloImg}
-            imgLink={produtoCerto.imgLink}
+            imgTitulo={produtoCerto.ImagemTitulo}
+            imgLink={produtoCerto.ImagemLink}
           />
         </Grid>
         <Grid container item xs={6} direction="column">
@@ -56,12 +58,12 @@ export default function Produto() {
               variant="h2"
               className={classes.TypographyNomeStyle}
             >
-              {produtoCerto.nome}
+              {produtoCerto.ProdutoNome}
             </Typography>
           </Grid>
           <Grid container item alignItems="center" justify="center" spacing={5}>
             <Grid item>
-              <Typography variant="h6">{produtoCerto.preco}</Typography>
+              <Typography variant="h6">{produtoCerto.Preco}</Typography>
             </Grid>
             <Grid item>
               <Button color="primary" variant="contained">
