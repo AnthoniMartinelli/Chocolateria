@@ -7,6 +7,7 @@ const useStyles = makeStyles(() => ({
   btnStyle: {
     float: "right",
     marginRight: "2%",
+    marginTop: "2%",
   },
 }));
 

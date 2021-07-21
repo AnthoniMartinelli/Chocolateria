@@ -1,5 +1,6 @@
-import { Button, Grid } from "@material-ui/core";
+import { Badge, Button, Grid } from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/dist/client/router";
@@ -11,6 +12,11 @@ const useStyles = makeStyles(() => ({
     marginLeft: "0.5%",
     marginRight: "1%",
     marginTop: "0.5%",
+  },
+  badgeStyle: {
+    float: "right",
+    marginRight: "4%",
+    marginTop: "2%",
   },
 }));
 
@@ -24,6 +30,9 @@ export default function CabecarioDesktop() {
       </Grid>
       <Grid item xs={6}>
         <BtnLoginLogout />
+        <Badge className={classes.badgeStyle} color="error" variant="dot">
+          <ShoppingCartIcon fontSize="large" />
+        </Badge>
       </Grid>
       <Grid item container direction="row" justify="flex-end">
         <Button
