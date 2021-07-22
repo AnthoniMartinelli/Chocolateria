@@ -252,7 +252,6 @@ class Login extends Component {
 
 Login.propTypes = {
   classes: PropTypes.instanceOf(Object).isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
   router: PropTypes.object.isRequired,
 };
 

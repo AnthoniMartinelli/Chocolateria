@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 import React, { useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Cookies from "js-cookie";

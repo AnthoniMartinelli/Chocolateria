@@ -277,9 +277,7 @@ class SignIn extends Component {
 }
 
 SignIn.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
   router: PropTypes.object.isRequired,
 };
 

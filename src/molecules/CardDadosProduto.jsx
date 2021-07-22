@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import PropType from "prop-types";
 import Typography from "@material-ui/core/Typography";
@@ -30,7 +29,6 @@ export default function CardDadosProduto({ produto }) {
   const quantidades = [];
   let quantidadeMax = 99;
   if (quantidadeMax > produto.Quantidade) quantidadeMax = produto.Quantidade;
-  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < quantidadeMax; i++) {
     quantidades.push(`${i + 1}`);
   }
