@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import Document, { Head, Main, NextScript, Html } from "next/document";
 import React from "react";

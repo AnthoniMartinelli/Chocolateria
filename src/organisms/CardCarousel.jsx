@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import PropTypes from "prop-types";
 import { Grid, makeStyles } from "@material-ui/core";
 import { useRouter } from "next/router";
+import Spinner from "../molecules/Spinner";
 
 const styles = makeStyles(() => ({
   CardStyle: {
@@ -51,11 +52,15 @@ export default function CardCarousel(props) {
     <Grid container item alignContent="stretch" justify="space-between">
       <Card className={classes.CardStyle} onClick={handlerCardClick}>
         <CardContent>
-          <CardMedia
-            title={CardMediaTitle}
-            image={CardMediaLink}
-            className={classes.CardMediaStyle}
-          />
+          {CardMediaLink ? (
+            <CardMedia
+              title={CardMediaTitle}
+              image={CardMediaLink}
+              className={classes.CardMediaStyle}
+            />
+          ) : (
+            <Spinner />
+          )}
           <Typography component="h6" className={classes.ProdutoStyle}>
             {ContentTitle}
           </Typography>

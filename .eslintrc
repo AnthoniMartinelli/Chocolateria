@@ -1,20 +1,22 @@
 {
-    "extends": ["airbnb", "prettier"],
-    "plugins": ["prettier"],
-    "rules": {
-        "prettier/prettier": ["error",
-            {
-                "endOfLine": "auto",
-                "printWidth": 80,
-                "tabWidth": 2,
-                "semi": true,
-                "singleQuote": false
-            }
-        ]
-    },
-    "parser": "babel-eslint",
-    "env": {
-        "browser": true,
-        "node": true
-      }
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error",
+        {
+            "endOfLine": "auto",
+            "printWidth": 80,
+            "tabWidth": 2,
+            "semi": true,
+            "singleQuote": false,
+            "react/jsx-props-no-spreading": "off"
+        }
+    ],
+    "react/jsx-props-no-spreading": "off"
+},
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
   }
+}

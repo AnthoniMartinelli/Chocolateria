@@ -8,6 +8,7 @@ import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles, TextField } from "@material-ui/core";
 import Produto from "../atoms/Produto";
+import { usarCarrinho } from "../atoms/Carrinho";
 
 const styles = makeStyles(() => ({
   GridItemStyle: {
@@ -25,6 +26,7 @@ const styles = makeStyles(() => ({
 
 export default function CardDadosProduto({ produto }) {
   const classes = styles();
+  const { adicionarProduto } = usarCarrinho();
   const quantidades = [];
   let quantidadeMax = 99;
   if (quantidadeMax > produto.Quantidade) quantidadeMax = produto.Quantidade;
@@ -32,11 +34,16 @@ export default function CardDadosProduto({ produto }) {
   for (let i = 0; i < quantidadeMax; i++) {
     quantidades.push(`${i + 1}`);
   }
+
+  function handlerClickBtn() {
+    // Implementar
+    adicionarProduto(produto, 1);
+  }
+
   return (
     <Card className={classes.CardStyle}>
       <Grid
         container
-        xs={6}
         direction="column"
         justify="space-between"
         className={classes.CardStyle}
@@ -67,7 +74,11 @@ export default function CardDadosProduto({ produto }) {
             />
           </Grid>
           <Grid item>
-            <Button color="primary" variant="contained">
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={handlerClickBtn}
+            >
               Comprar
             </Button>
           </Grid>
@@ -81,5 +92,5 @@ export default function CardDadosProduto({ produto }) {
 }
 
 CardDadosProduto.propTypes = {
-  produto: PropType.objectOf(Produto).isRequired,
+  produto: PropType.instanceOf(Produto).isRequired,
 };
