@@ -19,6 +19,16 @@
       "static/chunks/main.js",
       "static/chunks/pages/index.js"
     ],
+    "/About": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/About.js"
+    ],
+    "/[produto]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/[produto].js"
+    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

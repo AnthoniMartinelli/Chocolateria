@@ -85,7 +85,7 @@ export default function CabecarioMobile() {
                     </ListItem>
                   </>
                 )}
-                <ListItem button onClick={() => router.push("/")}>
+                <ListItem button onClick={() => router.push("/Carrinho")}>
                   <ListItemIcon>
                     <ShoppingCartIcon />
                   </ListItemIcon>

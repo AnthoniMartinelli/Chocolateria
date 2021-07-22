@@ -5,7 +5,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import PropTypes from "prop-types";
 import { Grid, makeStyles } from "@material-ui/core";
-import { useRouter } from "next/router";
 import Spinner from "../molecules/Spinner";
 
 const styles = makeStyles(() => ({
@@ -40,12 +39,12 @@ const styles = makeStyles(() => ({
 
 export default function CardCarousel(props) {
   const { CardMediaTitle, CardMediaLink, ContentTitle, ContentText } = props;
-  const router = useRouter();
   const classes = styles();
 
   function handlerCardClick() {
     const url = `/${ContentTitle.replace("%", "$")}`;
-    router.push(url);
+    url.replace(" ", "%");
+    window.location.href = `http://localhost:3000${url}`;
   }
 
   return (

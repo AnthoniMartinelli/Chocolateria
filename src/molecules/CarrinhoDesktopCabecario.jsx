@@ -5,8 +5,16 @@ import MenuItem from "@material-ui/core/MenuItem";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
+import { useRouter } from "next/dist/client/router";
 import Badge from "@material-ui/core/Badge";
-import { Grid, IconButton, makeStyles } from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {
+  Card,
+  Grid,
+  IconButton,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import { usarCarrinho } from "../atoms/Carrinho";
 
 const styles = makeStyles(() => ({
@@ -14,6 +22,9 @@ const styles = makeStyles(() => ({
     float: "right",
     marginRight: "4%",
     marginTop: "2%",
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   imgStyle: {
     width: "100px",
@@ -22,9 +33,11 @@ const styles = makeStyles(() => ({
 }));
 
 export default function CarrinhoDesktopCabecario() {
+  const router = useRouter();
   const classes = styles();
   const [anchorEl, setAnchorEl] = useState(null);
-  const { Carrinho } = usarCarrinho();
+  const { Carrinho, removerProduto, precoTotal } = usarCarrinho();
+
   function handleClick(event) {
     setAnchorEl(event.currentTarget);
   }
@@ -33,13 +46,14 @@ export default function CarrinhoDesktopCabecario() {
     setAnchorEl(null);
   }
 
-  function handlerTrashIconClick(event, produtoItem) {
-    event.stopPropagation();
-    console.log(produtoItem);
+  function handlerProdutoCarrinhoClick() {
+    router.push("/Carrinho");
   }
 
-  function handlerProdutoCarrinhoClick(event, produtoItem) {
-    console.log(produtoItem);
+  function handlerTrashIconClick(event, produtoItem) {
+    event.stopPropagation();
+    removerProduto(produtoItem);
+    handleClose();
   }
 
   return (
@@ -50,42 +64,47 @@ export default function CarrinhoDesktopCabecario() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {Carrinho.map((produto) => (
-          <MenuItem
-            key={produto.ProdutoNome}
-            onClick={(event) => handlerProdutoCarrinhoClick(event, produto)}
-          >
-            <ListItemIcon>
-              <img
-                src={produto.ImagemLink}
-                alt={produto.ImagemTitulo}
-                className={classes.imgStyle}
-              />
-            </ListItemIcon>
-            <ListItemText
-              primary={produto.ProdutoNome}
-              secondary={produto.Preco}
-            />
-            <ListItemIcon>
-              <Grid container item justify="center">
-                <IconButton
-                  onClick={(event) => handlerTrashIconClick(event, produto)}
-                >
-                  <DeleteForeverIcon color="action" />
-                </IconButton>
-              </Grid>
-            </ListItemIcon>
-          </MenuItem>
-        ))}
+        {Carrinho.length ? (
+          <div>
+            {Carrinho.map((produto) => (
+              <MenuItem
+                key={produto.ProdutoNome}
+                onClick={handlerProdutoCarrinhoClick}
+              >
+                <ListItemIcon>
+                  <img
+                    src={produto.ImagemLink}
+                    alt={produto.ImagemTitulo}
+                    className={classes.imgStyle}
+                  />
+                </ListItemIcon>
+                <ListItemText
+                  primary={produto.ProdutoNome}
+                  secondary={`Quantidade: ${produto.Quantidade} preço unitário: ${produto.Preco}`}
+                />
+                <ListItemIcon>
+                  <Grid container item justify="center">
+                    <IconButton
+                      onClick={(event) => handlerTrashIconClick(event, produto)}
+                    >
+                      <DeleteForeverIcon color="action" />
+                    </IconButton>
+                  </Grid>
+                </ListItemIcon>
+              </MenuItem>
+            ))}
+            <Typography align="center">Preço Total: {precoTotal()}</Typography>
+          </div>
+        ) : (
+          <Typography> O carrinho está vazio</Typography>
+        )}
       </Menu>
 
-      <Badge
-        onClick={handleClick}
-        className={classes.badgeStyle}
-        color="error"
-        variant="dot"
-      >
-        <ShoppingCartIcon fontSize="large" />
+      <Badge onClick={handleClick} className={classes.badgeStyle}>
+        <Card>
+          <ShoppingCartIcon fontSize="large" />
+          <ExpandMoreIcon />
+        </Card>
       </Badge>
     </div>
   );
