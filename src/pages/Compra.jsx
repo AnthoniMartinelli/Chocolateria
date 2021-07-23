@@ -38,9 +38,9 @@ export default function Compra() {
   const classes = styles();
 
   function handleChange(event, produto) {
-    // eslint-disable-next-line no-param-reassign
     produto.Quantidade = event.target.value;
     alterarProdutoCarrinho(produto);
+    window.location.reload();
   }
 
   function quantidadesPossiveis() {

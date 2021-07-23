@@ -14,7 +14,9 @@
     ],
     "react/jsx-props-no-spreading": "off",
     "react/forbid-prop-types": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "no-param-reassign": "off",
+    "array-callback-return": "off"
 },
   "parser": "babel-eslint",
   "env": {

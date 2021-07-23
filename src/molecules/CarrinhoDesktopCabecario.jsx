@@ -49,7 +49,7 @@ export default function CarrinhoDesktopCabecario() {
 
   function handlerProdutoCarrinhoClick() {
     handleClose();
-    router.push("/Carrinho");
+    router.push("/Compra");
   }
 
   function handlerTrashIconClick(event, produtoItem) {
@@ -68,7 +68,7 @@ export default function CarrinhoDesktopCabecario() {
       >
         {Carrinho.length ? (
           <div>
-            <Typography align="center">
+            <Typography align="center" onClick={handleClose}>
               <Link href="/Compra"> Ir para o carrinho</Link>
             </Typography>
             {Carrinho.map((produto) => (

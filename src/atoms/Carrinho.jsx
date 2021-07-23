@@ -96,12 +96,12 @@ export function CarrinhoProvider({ children }) {
     const produtoNoCarrinho = buscarProduto(produto.ProdutoNome);
     if (produtoNoCarrinho) {
       Carrinho.splice(Carrinho.indexOf(produtoNoCarrinho), 1, produto);
-      console.log(Carrinho);
       setCarrinho(Carrinho);
-      console.log(Carrinho);
+      Cookies.set(nomeCookie, Carrinho, { expires: 1 });
     } else {
       // mensagem de erro
     }
+    return Carrinho;
   }
 
   const value = {
