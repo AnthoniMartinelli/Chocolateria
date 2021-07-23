@@ -6,4 +6,10 @@ export default class Produto {
     this.Preco = preco;
     this.Quantidade = quantidade;
   }
+
+  precoTotal() {
+    const total =
+      parseFloat(this.Preco.substring(2).replace(",", ".")) * this.Quantidade;
+    return `R$ ${total.toFixed(2).replace(".", ",")}`;
+  }
 }

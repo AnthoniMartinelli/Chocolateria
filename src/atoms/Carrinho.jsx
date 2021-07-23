@@ -59,6 +59,10 @@ export function CarrinhoProvider({ children }) {
     Cookies.set(nomeCookie, Carrinho, { expires: 1 });
   }
 
+  function atualizarCarrinho(carrinho) {
+    setCarrinho(carrinho);
+  }
+  // melhorar
   function removerProduto(produtoApagar) {
     if (Carrinho.length > 0) {
       let indice = -1;
@@ -88,12 +92,25 @@ export function CarrinhoProvider({ children }) {
     });
     return valorTotal.toFixed(2);
   }
+  function alterarProdutoCarrinho(produto) {
+    const produtoNoCarrinho = buscarProduto(produto.ProdutoNome);
+    if (produtoNoCarrinho) {
+      Carrinho.splice(Carrinho.indexOf(produtoNoCarrinho), 1, produto);
+      console.log(Carrinho);
+      setCarrinho(Carrinho);
+      console.log(Carrinho);
+    } else {
+      // mensagem de erro
+    }
+  }
 
   const value = {
     Carrinho,
+    atualizarCarrinho,
     adicionarProduto,
     removerProduto,
     precoTotal,
+    alterarProdutoCarrinho,
   };
   return <contexto.Provider value={value}>{children}</contexto.Provider>;
 }

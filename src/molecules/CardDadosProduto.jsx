@@ -38,7 +38,7 @@ export default function CardDadosProduto({ produto }) {
 
   function handlerClickBtn() {
     adicionarProduto(produto, inputValue);
-    router.push("/Carrinho");
+    router.push("/Compra");
   }
 
   return (

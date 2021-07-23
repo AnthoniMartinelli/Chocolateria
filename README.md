@@ -7,8 +7,11 @@ npm install
 
 ### para rodar o projeto
 ```
-npm run dev
+npm run build
+```
+```
+npm start
 ```
 
 ### Descrição.
-Site feito para treinar react
+Site feito para treinar react e nextjs

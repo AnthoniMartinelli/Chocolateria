@@ -5,6 +5,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
+import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import Badge from "@material-ui/core/Badge";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -47,6 +48,7 @@ export default function CarrinhoDesktopCabecario() {
   }
 
   function handlerProdutoCarrinhoClick() {
+    handleClose();
     router.push("/Carrinho");
   }
 
@@ -66,6 +68,9 @@ export default function CarrinhoDesktopCabecario() {
       >
         {Carrinho.length ? (
           <div>
+            <Typography align="center">
+              <Link href="/Compra"> Ir para o carrinho</Link>
+            </Typography>
             {Carrinho.map((produto) => (
               <MenuItem
                 key={produto.ProdutoNome}
@@ -93,7 +98,9 @@ export default function CarrinhoDesktopCabecario() {
                 </ListItemIcon>
               </MenuItem>
             ))}
-            <Typography align="center">Preço Total: {precoTotal()}</Typography>
+            <Typography align="center">
+              Preço Total: R${precoTotal()}
+            </Typography>
           </div>
         ) : (
           <Typography> O carrinho está vazio</Typography>
