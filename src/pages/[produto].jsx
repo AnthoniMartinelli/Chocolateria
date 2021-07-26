@@ -26,8 +26,9 @@ const styles = makeStyles((theme) => ({
   },
   PaperStyle: {
     marginBottom: "1%",
+    marginLeft: "2%",
     marginTop: "1%",
-    width: "100%",
+    width: "96%",
   },
 }));
 
@@ -60,14 +61,14 @@ export default function Produto() {
       <div className={classes.BackgroundStyle}>
         <Paper className={classes.PaperStyle}>
           <Grid container alignContent="space-between" justify="space-between">
-            <Grid item className={classes.GridItemStyle}>
+            <Grid item className={classes.GridItemStyle} xs={5}>
               <img
                 alt={produtoCerto.ImagemTitulo}
                 src={produtoCerto.ImagemLink}
                 className={classes.imgStyle}
               />
             </Grid>
-            <Grid item>
+            <Grid item xs={7}>
               <CardDadosProduto produto={produtoCerto} />
             </Grid>
           </Grid>

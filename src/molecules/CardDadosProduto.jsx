@@ -25,6 +25,12 @@ const styles = makeStyles((theme) => ({
       fontSize: "3rem",
     },
   },
+  btnFreteStyle: {
+    marginTop: "3%",
+  },
+  TextFieldStyle: {
+    marginRight: "8%",
+  },
 }));
 
 export default function CardDadosProduto({ produto }) {
@@ -62,10 +68,10 @@ export default function CardDadosProduto({ produto }) {
           {produto.ProdutoNome}
         </Typography>
       </Grid>
-      <Grid item>
-        <Typography variant="h6">{produto.Preco}</Typography>
-      </Grid>
       <Grid container item alignItems="center" justify="center" spacing={5}>
+        <Grid item>
+          <Typography variant="h6">{produto.Preco}</Typography>
+        </Grid>
         <Grid item>
           <Autocomplete
             options={quantidades}
@@ -87,8 +93,19 @@ export default function CardDadosProduto({ produto }) {
           </Button>
         </Grid>
       </Grid>
-      <Grid item>
-        <TextField label="CEP" />
+      <Grid container justify="center">
+        <Grid item>
+          <TextField label="CEP" className={classes.TextFieldStyle} />
+        </Grid>
+        <Grid item>
+          <Button
+            color="primary"
+            variant="contained"
+            className={classes.btnFreteStyle}
+          >
+            Calcular frete
+          </Button>
+        </Grid>
       </Grid>
     </Grid>
   );
