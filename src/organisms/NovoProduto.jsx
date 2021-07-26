@@ -1,11 +1,11 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ScrollAnimation from "react-animate-on-scroll";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
+import Link from "next/link";
 import CardContent from "@material-ui/core/CardContent";
 import { Grid, makeStyles } from "@material-ui/core";
-import Spinner from "../molecules/Spinner";
 
 const styles = makeStyles((theme) => ({
   CardStyle: {
@@ -34,6 +34,9 @@ const styles = makeStyles((theme) => ({
     float: "left",
     height: "100%",
     width: "100%",
+    "&:hover": {
+      cursor: "pointer",
+    },
     [theme.breakpoints.up("xs")]: {
       paddingBottom: "0%",
       padding: "0%",
@@ -49,6 +52,10 @@ const styles = makeStyles((theme) => ({
     },
   },
   TextCompreStyle: {
+    "&:hover": {
+      cursor: "pointer",
+      textDecoration: "underline",
+    },
     [theme.breakpoints.up("xs")]: {
       fontSize: "14pt",
     },
@@ -63,6 +70,10 @@ const styles = makeStyles((theme) => ({
     },
   },
   TextPrecoStyle: {
+    "&:hover": {
+      cursor: "pointer",
+      textDecoration: "underline",
+    },
     [theme.breakpoints.up("xs")]: {
       fontSize: "14pt",
       marginTop: "1rem",
@@ -89,34 +100,38 @@ export default function NovoProduto() {
       <CardContent className={classes.CardContentStyle}>
         <Grid container direction="row" justify="space-evenly">
           <Grid container item xs={4}>
-            <Suspense fallback={<Spinner />}>
+            <Link href="Alfajor 20g">
               <CardMedia
                 title="imagem alfajor"
                 image="https://brasilcacau.vteximg.com.br/arquivos/ids/155602/Banners_Vitrine_v3_Variedades.png"
                 className={classes.CardMediaStyle}
               />
-            </Suspense>
+            </Link>
           </Grid>
           <Grid item className={classes.CardGridStyle} xs={8}>
             <ScrollAnimation animateIn="fadeIn" duration={2}>
-              <Typography
-                variant="h4"
-                component="h4"
-                color="primary"
-                className={classes.TextCompreStyle}
-              >
-                Compre o novo alfajor em uma loja próxima
-              </Typography>
+              <Link href="Alfajor 20g">
+                <Typography
+                  variant="h4"
+                  component="h4"
+                  color="primary"
+                  className={classes.TextCompreStyle}
+                >
+                  Compre o novo alfajor em uma loja próxima
+                </Typography>
+              </Link>
             </ScrollAnimation>
             <ScrollAnimation animateIn="zoomIn" duration={2} delay={1000}>
-              <Typography
-                variant="h2"
-                component="h2"
-                className={classes.TextPrecoStyle}
-                color="primary"
-              >
-                Apenas R$1,99
-              </Typography>
+              <Link href="Alfajor 20g">
+                <Typography
+                  variant="h2"
+                  component="h2"
+                  className={classes.TextPrecoStyle}
+                  color="primary"
+                >
+                  Apenas R$1,99
+                </Typography>
+              </Link>
             </ScrollAnimation>
           </Grid>
         </Grid>
