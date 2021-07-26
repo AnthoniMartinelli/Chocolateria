@@ -9,7 +9,7 @@ import { makeStyles, TextField } from "@material-ui/core";
 import Produto from "../atoms/Produto";
 import { usarCarrinho } from "../atoms/Carrinho";
 
-const styles = makeStyles(() => ({
+const styles = makeStyles((theme) => ({
   GridItemStyle: {
     height: "80%",
   },
@@ -20,6 +20,10 @@ const styles = makeStyles(() => ({
   TypographyNomeStyle: {
     marginTop: "5rem",
     marginBottom: "5rem",
+
+    [theme.breakpoints.up("xs")]: {
+      fontSize: "3rem",
+    },
   },
 }));
 

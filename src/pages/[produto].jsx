@@ -10,25 +10,24 @@ import { background } from "../atoms/tema";
 import Ofertas from "../templates/Ofertas";
 import CardDadosProduto from "../molecules/CardDadosProduto";
 
-const styles = makeStyles(() => ({
+const styles = makeStyles((theme) => ({
   BackgroundStyle: {
     backgroundColor: background,
+    width: "100%",
   },
   GridItemStyle: {
     height: "80%",
   },
   imgStyle: {
     height: "100%",
+    [theme.breakpoints.up("xs")]: {
+      width: "500px",
+    },
+  },
+  PaperStyle: {
+    marginBottom: "1%",
+    marginTop: "1%",
     width: "100%",
-  },
-  CardStyle: {
-    marginTop: "3%",
-    height: "100%",
-    paddingBottom: "58.5%",
-  },
-  TypographyNomeStyle: {
-    marginTop: "5rem",
-    marginBottom: "5rem",
   },
 }));
 
@@ -59,7 +58,7 @@ export default function Produto() {
         <title>{produtoCerto.ProdutoNome} - Chocolateria E CIA</title>
       </Head>
       <div className={classes.BackgroundStyle}>
-        <Paper>
+        <Paper className={classes.PaperStyle}>
           <Grid container alignContent="space-between" justify="space-between">
             <Grid item className={classes.GridItemStyle}>
               <img
