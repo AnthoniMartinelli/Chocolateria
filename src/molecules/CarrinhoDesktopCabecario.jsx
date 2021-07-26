@@ -38,7 +38,6 @@ export default function CarrinhoDesktopCabecario() {
   const classes = styles();
   const [anchorEl, setAnchorEl] = useState(null);
   const { Carrinho, removerProduto, precoTotal } = usarCarrinho();
-
   function handleClick(event) {
     setAnchorEl(event.currentTarget);
   }

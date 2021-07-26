@@ -4,11 +4,13 @@ import {
   makeStyles,
   Paper,
   Typography,
+  IconButton,
   Select,
   MenuItem,
   Button,
 } from "@material-ui/core";
 import { v4 } from "uuid";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import React from "react";
 import { background } from "../atoms/tema";
 import { usarCarrinho } from "../atoms/Carrinho";
@@ -34,7 +36,8 @@ const styles = makeStyles(() => ({
 }));
 
 export default function Compra() {
-  const { Carrinho, alterarProdutoCarrinho, precoTotal } = usarCarrinho();
+  const { Carrinho, alterarProdutoCarrinho, precoTotal, removerProduto } =
+    usarCarrinho();
   const classes = styles();
 
   function handleChange(event, produto) {
@@ -53,6 +56,10 @@ export default function Compra() {
       );
     }
     return itens;
+  }
+  function handlerTrashIconClick(event, produto) {
+    removerProduto(produto);
+    window.location.reload();
   }
 
   return (
@@ -74,7 +81,7 @@ export default function Compra() {
                     alt={produto.ImagemTitulo}
                   />
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={2}>
                   <Typography>{produto.ProdutoNome}</Typography>
                 </Grid>
                 <Grid
@@ -101,6 +108,13 @@ export default function Compra() {
                   <Typography align="center">
                     Preço: {produto.precoTotal()}
                   </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <IconButton
+                    onClick={(event) => handlerTrashIconClick(event, produto)}
+                  >
+                    <DeleteForeverIcon color="action" />
+                  </IconButton>
                 </Grid>
               </Grid>
               <Divider />

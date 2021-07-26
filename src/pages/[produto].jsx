@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import ProdutoClasse from "../atoms/Produto";
 import { usarAutenticacao } from "../atoms/services/firebase";
-import CardImagemGrande from "../molecules/CardImagemGrande";
 import { background } from "../atoms/tema";
 import Ofertas from "../templates/Ofertas";
 import CardDadosProduto from "../molecules/CardDadosProduto";
@@ -17,6 +16,10 @@ const styles = makeStyles(() => ({
   },
   GridItemStyle: {
     height: "80%",
+  },
+  imgStyle: {
+    height: "100%",
+    width: "100%",
   },
   CardStyle: {
     marginTop: "3%",
@@ -59,9 +62,10 @@ export default function Produto() {
         <Paper>
           <Grid container alignContent="space-between" justify="space-between">
             <Grid item className={classes.GridItemStyle}>
-              <CardImagemGrande
-                imgTitulo={produtoCerto.ImagemTitulo}
-                imgLink={produtoCerto.ImagemLink}
+              <img
+                alt={produtoCerto.ImagemTitulo}
+                src={produtoCerto.ImagemLink}
+                className={classes.imgStyle}
               />
             </Grid>
             <Grid item>

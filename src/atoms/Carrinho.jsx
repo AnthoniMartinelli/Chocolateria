@@ -16,6 +16,7 @@ export function CarrinhoProvider({ children }) {
     let CarrinhoCookies = Cookies.get(nomeCookie);
     if (CarrinhoCookies) {
       CarrinhoCookies = JSON.parse(CarrinhoCookies);
+      console.log(CarrinhoCookies);
       const produtos = [];
       CarrinhoCookies.map((produto) =>
         produtos.push(
@@ -39,7 +40,7 @@ export function CarrinhoProvider({ children }) {
     return undefined;
   }
 
-  function adicionarProduto(novoProduto, qtd) {
+  async function adicionarProduto(novoProduto, qtd) {
     const produtoNoCarrinho = buscarProduto(novoProduto.ProdutoNome);
     const n = new Produto(
       novoProduto.ImagemTitulo,
