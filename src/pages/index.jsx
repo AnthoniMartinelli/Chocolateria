@@ -9,6 +9,7 @@ import Ofertas from "../templates/Ofertas";
 const styles = makeStyles(() => ({
   divHomeStyle: {
     backgroundColor: primary,
+    minHeight: "70vh",
   },
   divOfertasStyle: {
     backgroundColor: background,

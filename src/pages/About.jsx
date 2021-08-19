@@ -15,6 +15,7 @@ const styles = makeStyles(() => ({
   },
   GridStyle: {
     backgroundColor: background,
+    minHeight: "82vh",
   },
 }));
 

@@ -12,6 +12,7 @@ import { background } from "../atoms/tema";
 const styles = makeStyles((theme) => ({
   GridStyle: {
     backgroundColor: background,
+    minHeight: "100vh",
   },
   CardStyle: {
     marginTop: "5%",

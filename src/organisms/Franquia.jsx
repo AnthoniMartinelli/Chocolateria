@@ -35,7 +35,7 @@ const styles = makeStyles((theme) => ({
     width: "100%",
     [theme.breakpoints.up("xs")]: {
       backgroundPosition: "center",
-      height: "80%",
+      height: "100%",
       paddingBottom: "18%",
     },
     [theme.breakpoints.up("sm")]: {
@@ -56,7 +56,7 @@ const styles = makeStyles((theme) => ({
   },
   TextVireStyle: {
     [theme.breakpoints.up("xs")]: {
-      fontSize: "10pt",
+      fontSize: "20pt",
     },
     [theme.breakpoints.up("sm")]: {
       fontSize: "20pt",

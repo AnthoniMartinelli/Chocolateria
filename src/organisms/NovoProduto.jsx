@@ -40,6 +40,7 @@ const styles = makeStyles((theme) => ({
     [theme.breakpoints.up("xs")]: {
       paddingBottom: "0%",
       padding: "0%",
+      height: "17vh",
     },
     [theme.breakpoints.up("sm")]: {
       paddingBottom: "30%",
@@ -48,7 +49,8 @@ const styles = makeStyles((theme) => ({
       paddingBottom: "20%",
     },
     [theme.breakpoints.up("lg")]: {
-      paddingBottom: "15%",
+      paddingBottom: "20%",
+      height: "40vh",
     },
   },
   TextCompreStyle: {
@@ -57,7 +59,7 @@ const styles = makeStyles((theme) => ({
       textDecoration: "underline",
     },
     [theme.breakpoints.up("xs")]: {
-      fontSize: "14pt",
+      fontSize: "20pt",
     },
     [theme.breakpoints.up("sm")]: {
       fontSize: "20pt",
@@ -66,7 +68,7 @@ const styles = makeStyles((theme) => ({
       fontSize: "30pt",
     },
     [theme.breakpoints.up("lg")]: {
-      fontSize: "35pt",
+      fontSize: "40pt",
     },
   },
   TextPrecoStyle: {
@@ -75,7 +77,7 @@ const styles = makeStyles((theme) => ({
       textDecoration: "underline",
     },
     [theme.breakpoints.up("xs")]: {
-      fontSize: "14pt",
+      fontSize: "20pt",
       marginTop: "1rem",
     },
     [theme.breakpoints.up("sm")]: {
@@ -87,7 +89,7 @@ const styles = makeStyles((theme) => ({
       marginTop: "5rem",
     },
     [theme.breakpoints.up("lg")]: {
-      fontSize: "35pt",
+      fontSize: "40pt",
       marginTop: "5rem",
     },
   },

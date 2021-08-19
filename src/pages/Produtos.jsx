@@ -11,6 +11,7 @@ import { usarAutenticacao } from "../atoms/services/firebase";
 const styles = makeStyles((theme) => ({
   GridStyle: {
     backgroundColor: background,
+    minHeight: "100vh",
   },
   GridItemStyle: {
     marginTop: "1%",

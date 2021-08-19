@@ -14,6 +14,7 @@ const styles = makeStyles((theme) => ({
   BackgroundStyle: {
     backgroundColor: background,
     width: "100%",
+    minHeight: "29vh",
   },
   GridItemStyle: {
     height: "80%",

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rodape renderiza o Rodape 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiCard-root makeStyles-CardStyle-1 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      class="MuiCardContent-root"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-justify-xs-center"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 MuiTypography-colorPrimary"
+        >
+          Chocolates e Cia || 
+          2021
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

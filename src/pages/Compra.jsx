@@ -18,6 +18,7 @@ import { usarCarrinho } from "../atoms/Carrinho";
 const styles = makeStyles(() => ({
   GridStyle: {
     backgroundColor: background,
+    minHeight: "83vh",
   },
   PaperStyle: {
     marginBottom: "1%",

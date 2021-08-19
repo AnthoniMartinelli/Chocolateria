@@ -31,6 +31,7 @@ const styles = (theme) =>
     },
     GridContainerStyle: {
       backgroundColor: background,
+      minHeight: "83vh",
     },
     TextLoginStyle: {
       marginBottom: "3rem",
